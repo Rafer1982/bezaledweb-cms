@@ -1,0 +1,160 @@
+---
+layout: base.njk
+pageTitle: "About Us — BEZALED Display Solutions"
+metaDescription: "Family-owned, US-based LED display company. 6+ years, 500+ installations, 5-year warranty on every product. Meet the Beza LED team."
+---
+
+<!-- ══════════════════════════════════════
+     1. HERO SECTION
+══════════════════════════════════════ -->
+<section class="page-hero" style="position:relative;z-index:2">
+  <div class="page-hero-bg">
+    <div class="img-placeholder" style="aspect-ratio:16/9;width:100%;height:100%;border-radius:0">
+      <div style="text-align:center; color: rgba(255,255,255,0.3);">
+        <div style="font-size:2rem; margin-bottom:8px;">🖼</div>
+        <div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">Team Photo</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-hero-inner" style="max-width:720px">
+    <div class="page-hero-tag">{{ about.hero_tag }}</div>
+    <h1 class="page-hero-title">{{ about.hero_title | safe }}</h1>
+    <p class="page-hero-sub" style="margin-bottom:32px">{{ about.hero_sub | safe }}</p>
+    <a href="#contact" class="btn-glass glass-m" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Talk to Us &rarr;</span></a>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     2. OUR STORY
+══════════════════════════════════════ -->
+<section class="info-section" style="position:relative;z-index:2">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+      <div>
+        <div class="sec-tag">{{ about.story_tag }}</div>
+        <h2 class="sec-title">{{ about.story_title | safe }}</h2>
+        <div style="color:var(--muted);line-height:1.8;font-size:0.95rem">
+          {% for p in about.story_paragraphs %}
+          <p style="margin-bottom:16px">{{ p | safe }}</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div>
+        <div class="img-placeholder" style="aspect-ratio: 16/9;">
+          <div style="text-align:center; color: rgba(255,255,255,0.3);">
+            <div style="font-size:2rem; margin-bottom:8px;">🖼</div>
+            <div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">Miami Aerial</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     3. VALUES — WHAT WE STAND FOR
+══════════════════════════════════════ -->
+<section class="info-section" style="position:relative;z-index:2">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="sec-tag" style="margin:0 auto 16px">What We Stand For</div>
+      <h2 class="sec-title">Our Values Drive Every Decision</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px">
+      {% for value in values.items %}
+      <div class="info-card" style="display:flex;gap:20px;align-items:flex-start">
+        {% if value.icon_color == "cyan" %}
+        <div style="width:48px;height:48px;border-radius:14px;background:rgba(0,206,209,0.1);border:1px solid rgba(0,206,209,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00CED1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        {% elif value.icon_color == "purple" %}
+        <div style="width:48px;height:48px;border-radius:14px;background:rgba(111,66,193,0.1);border:1px solid rgba(111,66,193,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6F42C1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="M10 9l2 13 2-13"/><path d="M6 3l4 6"/><path d="M18 3l-4 6"/></svg>
+        </div>
+        {% elif value.icon_color == "magenta" %}
+        <div style="width:48px;height:48px;border-radius:14px;background:rgba(224,26,89,0.1);border:1px solid rgba(224,26,89,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E01A59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        {% elif value.icon_color == "blue" %}
+        <div style="width:48px;height:48px;border-radius:14px;background:rgba(0,123,255,0.1);border:1px solid rgba(0,123,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#007BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        {% else %}
+        <div style="width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        {% endif %}
+        <div>
+          <div style="font-family:var(--fd);font-weight:700;font-size:1.05rem;margin-bottom:8px">{{ value.title }}</div>
+          <div style="font-size:0.88rem;color:var(--muted);line-height:1.7">{{ value.description | safe }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Values images -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div class="img-placeholder" style="aspect-ratio: 16/9;">
+        <div style="text-align:center; color: rgba(255,255,255,0.3);">
+          <div style="font-size:2rem; margin-bottom:8px;">🖼</div>
+          <div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">LED Panel Macro</div>
+        </div>
+      </div>
+      <div class="img-placeholder" style="aspect-ratio: 16/9;">
+        <div style="text-align:center; color: rgba(255,255,255,0.3);">
+          <div style="font-size:2rem; margin-bottom:8px;">🖼</div>
+          <div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">Installation Team</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     4. BY THE NUMBERS
+══════════════════════════════════════ -->
+<section class="info-section" style="position:relative;z-index:2;padding:80px 0">
+  <div class="container" style="text-align:center;margin-bottom:48px">
+    <div class="sec-tag" style="margin:0 auto 16px">By the Numbers</div>
+    <h2 class="sec-title">Results That Speak for Themselves</h2>
+  </div>
+  <div class="stats-grid" style="grid-template-columns:repeat(3, 1fr);gap:40px">
+    {% for stat in stats.items %}
+    <div class="stat-item">
+      {% if stat.value == "24/7" %}
+      <div class="stat-num" style="background:linear-gradient(135deg, var(--white), var(--C));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">24/7</div>
+      {% else %}
+      <div class="stat-num" data-val="{{ stat.value }}" data-suffix="{{ stat.suffix | default('') }}">0{{ stat.suffix | default('') }}</div>
+      {% endif %}
+      <div class="stat-lbl">{{ stat.label }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     5. US-BASED SECTION
+══════════════════════════════════════ -->
+<section class="info-section" style="position:relative;z-index:2">
+  <div class="container">
+    <div style="max-width:800px;margin:0 auto;text-align:center">
+      <div class="sec-tag" style="margin:0 auto 16px">{{ about.us_based_tag }}</div>
+      <h2 class="sec-title" style="margin-bottom:24px">{{ about.us_based_title | safe }}</h2>
+      <p style="font-size:1rem;color:var(--muted);line-height:1.85;max-width:700px;margin:0 auto">{{ about.us_based_text | safe }}</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     6. CONTACT SECTION
+══════════════════════════════════════ -->
+{% set contactTag = about.contact_tag %}
+{% set contactTitle = about.contact_title %}
+{% set contactSub = about.contact_sub %}
+{% include "contact-section.njk" %}
