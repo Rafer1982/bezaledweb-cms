@@ -1,7 +1,9 @@
 backend:
   name: github
-  repo: rafer1982/bezaledweb-cms
-  branch: main
+  repo: Rafer1982/bezaledweb-cms
+  branch: master
+  base_url: https://bezaledweb-cms.vercel.app
+  auth_endpoint: api/auth
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
