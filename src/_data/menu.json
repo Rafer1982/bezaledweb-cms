@@ -1,0 +1,9 @@
+{
+  "items": [
+    { "label": "About Us", "href": "/about/", "icon": "users" },
+    { "label": "Support", "href": "/support/", "icon": "headphones" },
+    { "label": "Our Work", "href": "/gallery/", "icon": "gallery" }
+  ],
+  "cta_text": "GET A FREE QUOTE",
+  "cta_href": "/#contact"
+}

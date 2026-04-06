@@ -1,0 +1,17 @@
+{
+  "social_links": [
+    { "label": "LinkedIn", "href": "#", "icon": "in" },
+    { "label": "X", "href": "#", "icon": "&#120143;" },
+    { "label": "YouTube", "href": "#", "icon": "&#9654;" },
+    { "label": "Instagram", "href": "#", "icon": "&#128247;" }
+  ],
+  "company_links": [
+    { "label": "About Us", "href": "/about/" },
+    { "label": "Support", "href": "/support/" },
+    { "label": "Our Work", "href": "/gallery/" },
+    { "label": "Warranty & Terms", "href": "/support/" }
+  ],
+  "cta_text": "Get a quote &rarr;",
+  "cta_href": "/#contact",
+  "copyright_suffix": "All rights reserved."
+}

@@ -80,94 +80,39 @@ metaDescription: "Premium LED displays for churches, virtual productions, airpor
     <p class="sec-sub">From fine-pitch indoor panels to weather-resistant outdoor displays &mdash; every Beza LED screen is designed for reliability, vibrancy, and long-term value.</p>
 
     <div class="products-grid">
-
-      <!-- P2.5 Indoor Panel -->
+      {%- for prod in collections.products %}
       <div class="glow-wrap"><div class="p-card">
         <div class="p-card-img" style="background:var(--card-2)">
-          <div class="bg-orb" style="width:200px;height:200px;background:var(--C);top:-50px;left:-50px;opacity:0.35"></div>
+          <div class="bg-orb" style="width:200px;height:200px;background:var(--{{ prod.data.badge_color | replace('cyan','C') | replace('blue','B') | replace('magenta','M') | replace('purple','P') }});top:-50px;left:-50px;opacity:0.38"></div>
           <div class="bg-orb" style="width:160px;height:160px;background:var(--B);bottom:-40px;right:-40px;opacity:0.35"></div>
-          <span class="p-card-badge" style="background:rgba(0,206,209,0.15);color:var(--C);border:1px solid rgba(0,206,209,0.3)">FINE PITCH</span>
+          <span class="p-card-badge" style="{{ prod.data.badge_style }};{{ prod.data.badge_text_style }}">{{ prod.data.badge }}</span>
+          {%- if prod.data.card_image %}
+          <img src="{{ prod.data.card_image }}" alt="{{ prod.data.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          {%- else %}
           <div class="img-placeholder" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
             <div style="text-align:center; color: rgba(255,255,255,0.3);">
               <div style="font-size:1.5rem; margin-bottom:6px;">&#128248;</div>
-              <div style="font-size:0.65rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[P2.5 INDOOR PANEL]</div>
+              <div style="font-size:0.65rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[{{ prod.data.title | upper }}]</div>
             </div>
           </div>
+          {%- endif %}
         </div>
         <div class="p-card-body">
-          <div class="p-cat">INDOOR LED</div>
-          <div class="p-name">P2.5 Fine Pitch Indoor</div>
-          <div class="p-desc">Ultra-fine 2.5mm pixel pitch for broadcast studios, command centers, and close-viewing environments.</div>
+          <div class="p-cat">{{ prod.data.category }}</div>
+          <div class="p-name">{{ prod.data.title }}</div>
+          <div class="p-desc">{{ prod.data.description }}</div>
           <div class="p-tags">
-            <span class="tag tag-c">2.5mm</span>
-            <span class="tag tag-b">800 nits</span>
-            <span class="tag tag-p">3840Hz</span>
+            <span class="tag tag-c">{{ prod.data.pixel_pitch }}</span>
+            <span class="tag tag-b">{{ prod.data.brightness }}</span>
+            <span class="tag tag-p">{{ prod.data.refresh_rate }}</span>
           </div>
           <div class="p-footer">
-            <div class="p-price"><span class="p-price-label">From</span>$999/mo</div>
-            <a href="/products/p25/" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Learn More &rarr;</span></a>
+            <div class="p-price"><span class="p-price-label">From</span>{{ prod.data.price_from }}</div>
+            <a href="{{ prod.data.permalink }}" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Learn More &rarr;</span></a>
           </div>
         </div>
       </div></div>
-
-      <!-- P2.9 Indoor Panel -->
-      <div class="glow-wrap"><div class="p-card">
-        <div class="p-card-img" style="background:var(--card-2)">
-          <div class="bg-orb" style="width:200px;height:200px;background:var(--B);top:-50px;left:-50px;opacity:0.4"></div>
-          <div class="bg-orb" style="width:160px;height:160px;background:var(--C);bottom:-40px;right:-40px;opacity:0.35"></div>
-          <span class="p-card-badge" style="background:rgba(0,123,255,0.15);color:var(--B);border:1px solid rgba(0,123,255,0.3)">PREMIUM</span>
-          <div class="img-placeholder" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-            <div style="text-align:center; color: rgba(255,255,255,0.3);">
-              <div style="font-size:1.5rem; margin-bottom:6px;">&#128248;</div>
-              <div style="font-size:0.65rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[P2.9 INDOOR PANEL]</div>
-            </div>
-          </div>
-        </div>
-        <div class="p-card-body">
-          <div class="p-cat">INDOOR LED</div>
-          <div class="p-name">P2.9 Premium Indoor</div>
-          <div class="p-desc">Versatile 2.9mm panel perfect for churches with live streaming, corporate boardrooms, and events.</div>
-          <div class="p-tags">
-            <span class="tag tag-b">2.9mm</span>
-            <span class="tag tag-c">1000 nits</span>
-            <span class="tag tag-p">3840Hz</span>
-          </div>
-          <div class="p-footer">
-            <div class="p-price"><span class="p-price-label">From</span>$999/mo</div>
-            <a href="/products/p29/" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Learn More &rarr;</span></a>
-          </div>
-        </div>
-      </div></div>
-
-      <!-- P3.9 Indoor Panel -->
-      <div class="glow-wrap"><div class="p-card">
-        <div class="p-card-img" style="background:var(--card-2)">
-          <div class="bg-orb" style="width:200px;height:200px;background:var(--M);top:-50px;left:-50px;opacity:0.4"></div>
-          <div class="bg-orb" style="width:160px;height:160px;background:var(--B);bottom:-40px;right:-40px;opacity:0.4"></div>
-          <span class="p-card-badge" style="background:linear-gradient(135deg,var(--M),var(--B));color:#fff">BEST SELLER</span>
-          <div class="img-placeholder" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-            <div style="text-align:center; color: rgba(255,255,255,0.3);">
-              <div style="font-size:1.5rem; margin-bottom:6px;">&#128248;</div>
-              <div style="font-size:0.65rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[P3.9 INDOOR PANEL]</div>
-            </div>
-          </div>
-        </div>
-        <div class="p-card-body">
-          <div class="p-cat">INDOOR LED</div>
-          <div class="p-name">P3.9 Best Seller Indoor</div>
-          <div class="p-desc">The most popular LED panel for churches, events, and corporate spaces. Stunning visuals at an unbeatable value.</div>
-          <div class="p-tags">
-            <span class="tag tag-m">3.9mm</span>
-            <span class="tag tag-c">1200 nits</span>
-            <span class="tag tag-b">Best Seller</span>
-          </div>
-          <div class="p-footer">
-            <div class="p-price"><span class="p-price-label">From</span>$999/mo</div>
-            <a href="/products/p39/" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Learn More &rarr;</span></a>
-          </div>
-        </div>
-      </div></div>
-
+      {%- endfor %}
     </div>
   </div>
 </section>

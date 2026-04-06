@@ -10,39 +10,34 @@
         <button class="btn-glass glass-sm glass-m"><span class="blob"></span><span class="btn-inner">Subscribe</span></button>
       </div>
       <div style="display:flex;gap:8px">
-        <a href="#" style="width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:0.82rem;text-decoration:none;transition:background 0.2s;color:var(--white)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">in</a>
-        <a href="#" style="width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:0.82rem;text-decoration:none;transition:background 0.2s;color:var(--white)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">&#120143;</a>
-        <a href="#" style="width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:0.82rem;text-decoration:none;transition:background 0.2s;color:var(--white)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">&#9654;</a>
-        <a href="#" style="width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:0.82rem;text-decoration:none;transition:background 0.2s;color:var(--white)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">&#128247;</a>
+        {%- for social in footer.social_links %}
+        <a href="{{ social.href }}" style="width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:0.82rem;text-decoration:none;transition:background 0.2s;color:var(--white)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">{{ social.icon | safe }}</a>
+        {%- endfor %}
       </div>
     </div>
     <div>
       <div class="footer-col-title">Products</div>
-      <a href="/products/p25/" class="footer-link">P2.5 Premium Panel</a>
-      <a href="/products/p29/" class="footer-link">P2.9 Standard Panel</a>
-      <a href="/products/p39/" class="footer-link">P3.9 Standard Panel</a>
-      <a href="/products/" class="footer-link">Outdoor Panels</a>
+      {%- for prod in collections.products %}
+      <a href="{{ prod.data.permalink }}" class="footer-link">{{ prod.data.title }}</a>
+      {%- endfor %}
       <a href="/products/" class="footer-link footer-link-accent" style="margin-top:4px">View catalog &rarr;</a>
     </div>
     <div>
       <div class="footer-col-title">Solutions</div>
-      <a href="/solutions/house-of-worship/" class="footer-link">Churches & Worship</a>
-      <a href="/solutions/virtual-productions/" class="footer-link">Virtual Productions</a>
-      <a href="/solutions/airports/" class="footer-link">Airports & Transportation</a>
-      <a href="/solutions/shopping-malls/" class="footer-link">Shopping Malls</a>
-      <a href="/solutions/trade-shows/" class="footer-link">Trade Shows</a>
+      {%- for sol in collections.solutions %}
+      <a href="{{ sol.data.permalink }}" class="footer-link">{{ sol.data.nav_label }}</a>
+      {%- endfor %}
     </div>
     <div>
       <div class="footer-col-title">Company</div>
-      <a href="/about/" class="footer-link">About Us</a>
-      <a href="/support/" class="footer-link">Support</a>
-      <a href="/gallery/" class="footer-link">Our Work</a>
-      <a href="/support/" class="footer-link">Warranty & Terms</a>
-      <a href="/#contact" class="footer-link footer-link-accent" style="color:var(--M);margin-top:4px">Get a quote &rarr;</a>
+      {%- for link in footer.company_links %}
+      <a href="{{ link.href }}" class="footer-link">{{ link.label }}</a>
+      {%- endfor %}
+      <a href="{{ footer.cta_href }}" class="footer-link footer-link-accent" style="color:var(--M);margin-top:4px">{{ footer.cta_text | safe }}</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">&copy; 2026 {{ site.company_name }} {{ site.company_sub }}. All rights reserved.</div>
+    <div class="footer-copy">&copy; 2026 {{ site.company_name }} {{ site.company_sub }}. {{ footer.copyright_suffix }}</div>
     <div class="footer-legal">
       <a href="/support/">Warranty & Terms</a>
     </div>

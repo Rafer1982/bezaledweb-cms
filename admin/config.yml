@@ -136,6 +136,43 @@ collections:
             widget: "list"
             field: { label: "Item", name: "item", widget: "string" }
 
+      # ── Navigation Menu ──
+      - name: "menu"
+        label: "Navigation Menu"
+        file: "src/_data/menu.json"
+        fields:
+          - label: "Menu Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Link", name: "href", widget: "string" }
+              - { label: "Icon", name: "icon", widget: "select", options: ["users", "headphones", "gallery", "layers", "grid"] }
+          - { label: "CTA Text", name: "cta_text", widget: "string" }
+          - { label: "CTA Link", name: "cta_href", widget: "string" }
+
+      # ── Footer ──
+      - name: "footer"
+        label: "Footer"
+        file: "src/_data/footer.json"
+        fields:
+          - label: "Social Links"
+            name: "social_links"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "href", widget: "string" }
+              - { label: "Icon Text", name: "icon", widget: "string" }
+          - label: "Company Links"
+            name: "company_links"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Link", name: "href", widget: "string" }
+          - { label: "CTA Text", name: "cta_text", widget: "string" }
+          - { label: "CTA Link", name: "cta_href", widget: "string" }
+          - { label: "Copyright Suffix", name: "copyright_suffix", widget: "string" }
+
       # ── About ──
       - name: "about"
         label: "About"
