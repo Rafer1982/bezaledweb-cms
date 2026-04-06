@@ -2,7 +2,13 @@
   "tag": "PREMIUM LED DISPLAYS &middot; ALL ACROSS THE U.S.",
   "title_prefix": "Premium LED displays",
   "title_suffix": "for your",
-  "rotating_words": ["church", "stadium", "concert", "campus", "event"],
+  "rotating_words": [
+    "church",
+    "stadium",
+    "concert",
+    "campus",
+    "event"
+  ],
   "description": "Large-format LED displays for churches, stadiums, concerts, and corporate spaces. 48-hour installation, 5-year warranty, 24/7 support.",
   "cta_primary_text": "Explore Solutions",
   "cta_primary_href": "#products",
@@ -16,7 +22,7 @@
   "strip_items": [
     {
       "title": "5-Year Warranty",
-      "description": "All Beza LED screens come with a 5-year warranty, ensuring reliability and complete satisfaction."
+      "description": "All Beza LED screens come with a 5-year warranty, ensuring reliability and complete satisfaction.."
     },
     {
       "title": "Flexible Financing",
