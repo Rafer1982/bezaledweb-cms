@@ -1,0 +1,233 @@
+---
+layout: base.njk
+---
+
+<!-- ════ 1. PAGE HERO ════ -->
+<section class="page-hero" style="position:relative;min-height:600px;display:flex;align-items:center;overflow:hidden;padding:0">
+  <!-- Background image placeholder -->
+  <div style="position:absolute;inset:0;z-index:0;background:var(--card-2)">
+    {% if hero_image %}
+    <img src="{{ hero_image }}" alt="{{ title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    {% else %}
+    <div class="img-placeholder" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center; color: rgba(255,255,255,0.3);">
+        <div style="font-size:2rem; margin-bottom:8px;">&#128248;</div>
+        <div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[HERO &mdash; {{ title | upper }}]</div>
+      </div>
+    </div>
+    {% endif %}
+    <!-- Dark overlays for text legibility -->
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(7,9,14,0.88) 0%, rgba(7,9,14,0.55) 45%, rgba(7,9,14,0.2) 100%);z-index:1"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(7,9,14,0.5) 0%, transparent 30%, transparent 70%, rgba(7,9,14,0.85) 100%);z-index:1"></div>
+  </div>
+
+  <!-- Accent bar -->
+  <div class="hero-accent-bar" style="position:absolute;top:0;left:0;right:0;height:2px;z-index:3;background:linear-gradient(90deg,var(--M),var(--B),var(--C),var(--P),var(--M));background-size:200% 100%;animation:barShift 4s linear infinite"></div>
+
+  <!-- Hero content -->
+  <div style="position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:clamp(120px,14vh,180px) clamp(24px,4vw,80px) 80px">
+    <div style="max-width:620px">
+      <!-- Tag -->
+      <div class="hero-tag" style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:50px;border:1px solid rgba(0,206,209,0.3);background:rgba(0,206,209,0.06);backdrop-filter:blur(12px);margin-bottom:14px;width:fit-content">
+        <div class="hero-tag-dot" style="width:7px;height:7px;border-radius:50%;background:var(--C);box-shadow:0 0 10px rgba(0,206,209,0.9);animation:pulse 2s ease-in-out infinite"></div>
+        <span style="font-size:0.71rem;color:var(--C);letter-spacing:2.5px;text-transform:uppercase;font-family:var(--fd);font-weight:600">{{ hero_tag }}</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 style="font-family:var(--fd);font-weight:700;font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.08;letter-spacing:-0.02em;margin-bottom:18px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,0.9),0 0 60px rgba(0,0,0,0.7)">
+        {{ hero_title | safe }}
+      </h1>
+
+      <!-- Sub -->
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.82);line-height:1.65;max-width:500px;margin-bottom:28px;text-shadow:0 1px 12px rgba(0,0,0,0.8)">
+        {{ hero_description }}
+      </p>
+
+      <!-- CTA buttons -->
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#contact" class="btn-glass glass-m" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Get a Custom Quote &rarr;</span></a>
+        <a href="/products/" class="btn-glass glass-c" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Explore Products</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 2. PAIN POINT SECTION ════ -->
+<section style="position:relative;z-index:2;padding:80px 0">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+
+      <!-- Left: content -->
+      <div>
+        <div class="sec-tag">{{ pain_section.tag }}</div>
+        <h2 class="sec-title">{{ pain_section.title | safe }}</h2>
+        {% for p in pain_section.paragraphs %}
+        <p style="font-size:0.92rem;color:var(--muted);line-height:1.75;margin-bottom:{% if loop.last %}36px{% else %}24px{% endif %}">
+          {{ p | safe }}
+        </p>
+        {% endfor %}
+
+        <!-- Stats -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          {% for stat in pain_section.stats %}
+          <div style="padding:20px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px">
+            <div style="font-family:var(--fd);font-weight:700;font-size:{% if stat.value | length > 6 %}1.5rem{% else %}2rem{% endif %};background:linear-gradient(135deg,{% if loop.first %}var(--M),var(--B){% else %}var(--C),var(--B){% endif %});-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px">{{ stat.value }}</div>
+            <div style="font-size:0.78rem;color:var(--muted);line-height:1.5">{{ stat.label }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Right: image -->
+      <div>
+        {% if pain_section.image %}
+        <img src="{{ pain_section.image }}" alt="{{ pain_section.tag }}" style="aspect-ratio:16/9;border-radius:20px;overflow:hidden;width:100%;object-fit:cover;border:1px solid rgba(255,255,255,0.08)">
+        {% else %}
+        <div class="img-placeholder" style="aspect-ratio: 16/9; border-radius:20px; overflow:hidden; background:var(--card); border:1px solid rgba(255,255,255,0.08);">
+          <div style="text-align:center; color: rgba(255,255,255,0.3);">
+            <div style="font-size:2rem; margin-bottom:8px;">&#128248;</div>
+            <div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[{{ pain_section.tag | upper }}]</div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 3. WHY LED / SOLUTION SECTION ════ -->
+<section style="position:relative;z-index:2;padding:80px 0;background:rgba(0,0,0,0.15)">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag" style="justify-content:center">{{ why_section.tag }}</div>
+      <h2 class="sec-title" style="margin:0 auto 18px">{{ why_section.title | safe }}</h2>
+      <p class="sec-sub" style="margin:0 auto;text-align:center">{{ why_section.description }}</p>
+    </div>
+
+    <!-- Before/after image -->
+    <div style="margin-bottom:64px">
+      {% if why_section.image %}
+      <img src="{{ why_section.image }}" alt="{{ why_section.tag }}" style="aspect-ratio:21/9;border-radius:20px;overflow:hidden;width:100%;object-fit:cover;border:1px solid rgba(255,255,255,0.08)">
+      {% else %}
+      <div class="img-placeholder" style="aspect-ratio: 21/9; border-radius:20px; overflow:hidden; background:var(--card); border:1px solid rgba(255,255,255,0.08);">
+        <div style="text-align:center; color: rgba(255,255,255,0.3);">
+          <div style="font-size:2rem; margin-bottom:8px;">&#128248;</div>
+          <div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[{{ why_section.tag | upper }}]</div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Benefit cards (4 columns) -->
+    {% set benefit_colors = ["cyan", "magenta", "blue", "purple"] %}
+    {% set color_map = {
+      "cyan": { "rgb": "0,206,209", "hex": "#00CED1", "var": "C" },
+      "magenta": { "rgb": "224,26,89", "hex": "#E01A59", "var": "M" },
+      "blue": { "rgb": "0,123,255", "hex": "#007BFF", "var": "B" },
+      "purple": { "rgb": "111,66,193", "hex": "#6F42C1", "var": "P" },
+      "green": { "rgb": "76,175,80", "hex": "#4CAF50", "var": "G" }
+    } %}
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      {% for benefit in benefits %}
+      {% set c = color_map[benefit.icon_color] or color_map["cyan"] %}
+      <div style="background:var(--card);border:1px solid rgba(255,255,255,0.09);border-radius:20px;padding:32px 24px;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba({{ c.rgb }},0.3)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(255,255,255,0.09)'">
+        <div style="width:48px;height:48px;border-radius:14px;background:rgba({{ c.rgb }},0.1);border:1px solid rgba({{ c.rgb }},0.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px">
+          {{ benefit.icon | safe }}
+        </div>
+        <div style="font-family:var(--fd);font-weight:700;font-size:1rem;margin-bottom:8px">{{ benefit.title }}</div>
+        <div style="font-size:0.82rem;color:var(--muted);line-height:1.65">{{ benefit.description | safe }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 4. FEATURES / TECHNICAL SPECIFICATIONS ════ -->
+{% if features_section %}
+<section style="position:relative;z-index:2;padding:80px 0">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag" style="justify-content:center">Technical Specifications</div>
+      <h2 class="sec-title" style="margin:0 auto 18px">{{ features_section.title | safe }}</h2>
+      <p class="sec-sub" style="margin:0 auto;text-align:center">{{ features_section.description }}</p>
+    </div>
+
+    <!-- Feature grid: 3 columns -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      {% for feature in features_section.items %}
+      {% set c = color_map[feature.icon_color] or color_map["cyan"] %}
+      <div style="background:var(--card);border:1px solid rgba(255,255,255,0.09);border-radius:20px;padding:36px 28px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba({{ c.rgb }},0.08),transparent);pointer-events:none"></div>
+        {% if feature.stat_value %}
+        <div style="font-family:var(--fd);font-weight:700;font-size:2.4rem;color:{% if feature.icon_color == 'green' %}#4CAF50{% else %}var(--{{ c.var }}){% endif %};margin-bottom:4px;line-height:1">{{ feature.stat_value | safe }}</div>
+        <div style="font-family:var(--fd);font-weight:600;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:16px">{{ feature.stat_label }}</div>
+        {% else %}
+        <div style="width:48px;height:48px;border-radius:14px;background:rgba({{ c.rgb }},0.1);border:1px solid rgba({{ c.rgb }},0.2);display:flex;align-items:center;justify-content:center;margin-bottom:14px">
+          {{ feature.icon | safe }}
+        </div>
+        {% endif %}
+        <div style="font-family:var(--fd);font-weight:700;font-size:1rem;margin-bottom:8px">{{ feature.title }}</div>
+        <div style="font-size:0.82rem;color:var(--muted);line-height:1.65">{{ feature.description | safe }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+<!-- ════ 5. THE BEZALED DIFFERENCE ════ -->
+{% if difference_section %}
+<section style="position:relative;z-index:2;padding:80px 0;background:rgba(0,0,0,0.15)">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag" style="justify-content:center">Why BEZALED</div>
+      <h2 class="sec-title" style="margin:0 auto 18px">The Beza LED <em style="font-style:normal;background:linear-gradient(135deg,var(--M),var(--B),var(--C));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Difference</em></h2>
+      <p class="sec-sub" style="margin:0 auto;text-align:center">We don't just sell screens &mdash; we deliver complete solutions with unmatched support and peace of mind.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      {% for item in difference_section %}
+      {% set c = color_map[item.icon_color] or color_map["cyan"] %}
+      <div style="background:linear-gradient(160deg,rgba(22,26,38,1),rgba(16,19,30,1));border:1px solid rgba({{ c.rgb }},0.15);border-radius:22px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='rgba({{ c.rgb }},0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba({{ c.rgb }},0.15)'">
+        <div style="width:56px;height:56px;border-radius:16px;background:rgba({{ c.rgb }},0.1);border:1px solid rgba({{ c.rgb }},0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
+          {{ item.icon | safe }}
+        </div>
+        <div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">{{ item.title }}</div>
+        <div style="font-size:0.82rem;color:var(--muted);line-height:1.6">{{ item.description | safe }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Installation image -->
+    <div style="margin-top:64px">
+      {% if difference_image %}
+      <img src="{{ difference_image }}" alt="Turn-Key Installation" style="aspect-ratio:16/9;border-radius:20px;overflow:hidden;width:100%;object-fit:cover;border:1px solid rgba(255,255,255,0.08)">
+      {% else %}
+      <div class="img-placeholder" style="aspect-ratio: 16/9; border-radius:20px; overflow:hidden; background:var(--card); border:1px solid rgba(255,255,255,0.08);">
+        <div style="text-align:center; color: rgba(255,255,255,0.3);">
+          <div style="font-size:2rem; margin-bottom:8px;">&#128248;</div>
+          <div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[TURN-KEY INSTALLATION]</div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+<!-- ════ EXTRA BODY CONTENT ════ -->
+{% if content | trim %}
+{{ content | safe }}
+{% endif %}
+
+
+<!-- ════ CONTACT SECTION ════ -->
+{% set contactTag = contact_tag | default("Request a Quote") %}
+{% set contactTitle = contact_title | default('Tell us about your <em style="font-style:normal;background:linear-gradient(135deg,var(--M),var(--B),var(--C));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">project</em>') %}
+{% set contactSub = contact_sub | default("Fill out the form and our team will prepare a custom proposal with layout recommendations, pricing, and financing options within 24 hours.") %}
+{% include "contact-section.njk" %}
