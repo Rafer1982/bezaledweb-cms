@@ -1,0 +1,153 @@
+---
+layout: base.njk
+---
+
+<!-- ════ 1. PRODUCT HERO ════ -->
+<section class="page-hero" style="position:relative;min-height:600px;display:flex;align-items:center;overflow:hidden;padding:0">
+  <div style="position:absolute;inset:0;z-index:0;background:var(--card-2)">
+    {% if hero_image %}
+    <img src="{{ hero_image }}" alt="{{ title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    {% else %}
+    <div class="img-placeholder" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center; color: rgba(255,255,255,0.3);"><div style="font-size:2rem; margin-bottom:8px;">&#128248;</div><div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[{{ title | upper }} PRODUCT HERO]</div></div>
+    </div>
+    {% endif %}
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(7,9,14,0.88) 0%, rgba(7,9,14,0.55) 45%, rgba(7,9,14,0.2) 100%);z-index:1"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(7,9,14,0.5) 0%, transparent 30%, transparent 70%, rgba(7,9,14,0.85) 100%);z-index:1"></div>
+  </div>
+
+  <div class="hero-accent-bar" style="position:absolute;top:0;left:0;right:0;height:2px;z-index:3;background:linear-gradient(90deg,var(--M),var(--B),var(--C),var(--P),var(--M));background-size:200% 100%;animation:barShift 4s linear infinite"></div>
+
+  <div style="position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:clamp(120px,14vh,180px) clamp(24px,4vw,80px) 80px">
+    <div style="max-width:620px">
+      <div class="hero-tag" style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:50px;border:1px solid {{ hero_tag_border }};background:{{ hero_tag_bg }};backdrop-filter:blur(12px);margin-bottom:14px;width:fit-content">
+        <div class="hero-tag-dot" style="width:7px;height:7px;border-radius:50%;background:var(--{{ hero_tag_var }});box-shadow:0 0 10px {{ hero_tag_glow }};animation:pulse 2s ease-in-out infinite"></div>
+        <span style="font-size:0.71rem;color:var(--{{ hero_tag_var }});letter-spacing:2.5px;text-transform:uppercase;font-family:var(--fd);font-weight:600">{{ hero_tag }}</span>
+      </div>
+
+      <h1 style="font-family:var(--fd);font-weight:700;font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.08;letter-spacing:-0.02em;margin-bottom:18px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,0.9),0 0 60px rgba(0,0,0,0.7)">
+        {{ hero_title_prefix }} <em style="font-style:normal;background:linear-gradient(135deg,#ffffff,#e0e7ff,#ffffff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none">LED Display</em>
+      </h1>
+
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.82);line-height:1.65;max-width:500px;margin-bottom:28px;text-shadow:0 1px 12px rgba(0,0,0,0.8)">
+        {{ hero_description }}
+      </p>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px">
+        <div style="padding:8px 16px;border-radius:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);font-family:var(--fd);font-weight:600;font-size:0.78rem;color:var(--white)">{{ pixel_pitch }} Pixel Pitch</div>
+        <div style="padding:8px 16px;border-radius:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);font-family:var(--fd);font-weight:600;font-size:0.78rem;color:var(--white)">{{ brightness }}</div>
+        <div style="padding:8px 16px;border-radius:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);font-family:var(--fd);font-weight:600;font-size:0.78rem;color:var(--white)">{{ refresh_rate }}</div>
+        <div style="padding:8px 16px;border-radius:12px;{{ badge_style }};font-family:var(--fd);font-weight:700;font-size:0.78rem;{{ badge_text_style }}">{{ badge }}</div>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#contact" class="btn-glass glass-m" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Get a Quote &rarr;</span></a>
+        <a href="/products/" class="btn-glass glass-c" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Compare Models</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 2. TECHNICAL SPECIFICATIONS ════ -->
+<section style="position:relative;z-index:2;padding:80px 0">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag" style="justify-content:center">Technical Specifications</div>
+      <h2 class="sec-title" style="margin:0 auto 18px">Complete <em style="font-style:normal;background:linear-gradient(135deg,var(--C),var(--B));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Spec Sheet</em></h2>
+      <p class="sec-sub" style="margin:0 auto;text-align:center">Every detail you need to make an informed decision.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+      <div style="background:var(--card);border:1px solid rgba(255,255,255,0.09);border-radius:20px;overflow:hidden">
+        <div style="padding:24px 28px;border-bottom:1px solid rgba(255,255,255,0.08);font-family:var(--fd);font-weight:700;font-size:1rem">{{ spec_table_title }} Full Specifications</div>
+        <table style="width:100%;border-collapse:collapse">
+          {%- for spec in specs %}
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06){% if loop.index0 % 2 == 1 %};background:rgba(255,255,255,0.015){% endif %}">
+            <td style="padding:14px 28px;font-size:0.85rem;color:var(--muted);font-family:var(--fb)">{{ spec.label }}</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:{% if spec.label == 'Warranty' %}var(--C){% else %}var(--white){% endif %};font-family:var(--fd);text-align:right">{{ spec.value | safe }}</td>
+          </tr>
+          {%- endfor %}
+        </table>
+      </div>
+
+      <div>
+        {% if spec_image %}
+        <img src="{{ spec_image }}" alt="{{ title }} pixel detail" style="aspect-ratio:1/1;border-radius:20px;overflow:hidden;width:100%;object-fit:cover;border:1px solid rgba(255,255,255,0.08);margin-bottom:28px">
+        {% else %}
+        <div class="img-placeholder" style="aspect-ratio:1/1;border-radius:20px;overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,0.08);margin-bottom:28px">
+          <div style="text-align:center; color: rgba(255,255,255,0.3);"><div style="font-size:2rem; margin-bottom:8px;">&#128248;</div><div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[{{ title | upper }} PIXEL DETAIL]</div></div>
+        </div>
+        {% endif %}
+        <div style="padding:24px;background:{{ spec_callout_bg }};border:1px solid {{ spec_callout_border }};border-radius:16px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--{{ spec_callout_var }});box-shadow:0 0 8px {{ spec_callout_glow }}"></div>
+            <span style="font-family:var(--fd);font-weight:700;font-size:0.85rem;color:var(--{{ spec_callout_var }})">{{ spec_callout_label }}</span>
+          </div>
+          <div style="font-size:0.82rem;color:var(--muted);line-height:1.65">{{ spec_callout_text | safe }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 3. IDEAL FOR ════ -->
+<section style="position:relative;z-index:2;padding:80px 0;background:rgba(0,0,0,0.15)">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag" style="justify-content:center">Applications</div>
+      <h2 class="sec-title" style="margin:0 auto 18px">Ideal <em style="font-style:normal;background:linear-gradient(135deg,{{ apps_gradient_from }},{{ apps_gradient_to }});-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">For</em></h2>
+      {% if apps_subtitle %}<p class="sec-sub" style="margin:0 auto;text-align:center">{{ apps_subtitle }}</p>{% endif %}
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      {%- for app in applications %}
+      <div style="background:var(--card);border:1px solid rgba(255,255,255,0.09);border-radius:20px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='{{ app.hover_color }}'" onmouseout="this.style.transform='';this.style.borderColor='rgba(255,255,255,0.09)'">
+        <div style="width:56px;height:56px;border-radius:16px;background:{{ app.icon_bg }};border:1px solid {{ app.icon_border }};display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+          {{ app.icon | safe }}
+        </div>
+        <div style="font-family:var(--fd);font-weight:700;font-size:1rem;margin-bottom:8px">{{ app.name }}</div>
+        <div style="font-size:0.82rem;color:var(--muted);line-height:1.6">{{ app.description }}</div>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 4. KEY FEATURES ════ -->
+<section style="position:relative;z-index:2;padding:80px 0">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag" style="justify-content:center">Key Features</div>
+      <h2 class="sec-title" style="margin:0 auto 18px">Engineered for <em style="font-style:normal;background:linear-gradient(135deg,{{ features_gradient_from }},{{ features_gradient_to }});-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">{{ features_word }}</em></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      {%- for feat in features %}
+      <div style="background:var(--card);border:1px solid rgba(255,255,255,0.09);border-radius:20px;padding:36px 28px;position:relative;overflow:hidden"><div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,{{ feat.glow }},transparent);pointer-events:none"></div><div style="font-family:var(--fd);font-weight:700;font-size:1rem;margin-bottom:8px">{{ feat.name }}</div><div style="font-size:0.82rem;color:var(--muted);line-height:1.65">{{ feat.description | safe }}</div></div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 5. THE BEZALED DIFFERENCE ════ -->
+<section style="position:relative;z-index:2;padding:80px 0;background:rgba(0,0,0,0.15)">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag" style="justify-content:center">Why BEZALED</div>
+      <h2 class="sec-title" style="margin:0 auto 18px">The Beza LED <em style="font-style:normal;background:linear-gradient(135deg,var(--M),var(--B),var(--C));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Difference</em></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <div style="background:linear-gradient(160deg,rgba(22,26,38,1),rgba(16,19,30,1));border:1px solid rgba(0,206,209,0.15);border-radius:22px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(0,206,209,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(0,206,209,0.15)'"><div style="width:56px;height:56px;border-radius:16px;background:rgba(0,206,209,0.1);border:1px solid rgba(0,206,209,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00CED1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">5-Year Warranty</div><div style="font-size:0.82rem;color:var(--muted);line-height:1.6">Industry-leading coverage on all panels, controllers, and power supplies.</div></div>
+      <div style="background:linear-gradient(160deg,rgba(22,26,38,1),rgba(16,19,30,1));border:1px solid rgba(224,26,89,0.15);border-radius:22px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(224,26,89,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(224,26,89,0.15)'"><div style="width:56px;height:56px;border-radius:16px;background:rgba(224,26,89,0.1);border:1px solid rgba(224,26,89,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E01A59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div><div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">24/7 US-Based Support</div><div style="font-size:0.82rem;color:var(--muted);line-height:1.6">Real humans answering your calls, day or night.</div></div>
+      <div style="background:linear-gradient(160deg,rgba(22,26,38,1),rgba(16,19,30,1));border:1px solid rgba(0,123,255,0.15);border-radius:22px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(0,123,255,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(0,123,255,0.15)'"><div style="width:56px;height:56px;border-radius:16px;background:rgba(0,123,255,0.1);border:1px solid rgba(0,123,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#007BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">Financing from $999/mo</div><div style="font-size:0.82rem;color:var(--muted);line-height:1.6">Flexible financing options. Get your LED wall today and pay over time.</div></div>
+      <div style="background:linear-gradient(160deg,rgba(22,26,38,1),rgba(16,19,30,1));border:1px solid rgba(111,66,193,0.15);border-radius:22px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(111,66,193,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(111,66,193,0.15)'"><div style="width:56px;height:56px;border-radius:16px;background:rgba(111,66,193,0.1);border:1px solid rgba(111,66,193,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6F42C1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">Turn-Key Installation</div><div style="font-size:0.82rem;color:var(--muted);line-height:1.6">Site survey, installation, calibration, and training &mdash; all handled by our team.</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 6. CONTACT ════ -->
+{% include "contact-section.njk" %}
