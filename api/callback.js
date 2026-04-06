@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 module.exports = async (req, res) => {
   const { code } = req.query;
   const clientId = process.env.OAUTH_GITHUB_CLIENT_ID;
