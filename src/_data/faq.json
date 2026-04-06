@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "question": "My screen has dead pixels. What do I do?",
+      "answer": "Contact us immediately at +1 (786) 826-7016 or email info@bezaled.com. Our team will assess the issue remotely and arrange replacement modules under your 5-year warranty if applicable."
+    },
+    {
+      "question": "The screen is turning on but showing no image. What should I check?",
+      "answer": "First, verify all data cables between the sending card and receiving cards are secure. Check that your content source (laptop, media player) is properly connected and outputting signal. If the issue persists, call our 24/7 support line."
+    },
+    {
+      "question": "Can I update my content remotely?",
+      "answer": "Yes. All Beza LED systems are configured with remote content management capabilities. Our team will walk you through your CMS during setup."
+    },
+    {
+      "question": "What if I need to expand my display in the future?",
+      "answer": "Our modular cabinets are designed to expand. Existing installations can be extended without replacing current panels. Contact sales for a custom expansion quote."
+    },
+    {
+      "question": "My warranty period ended. Do you still provide support?",
+      "answer": "Yes. We offer extended service contracts and post-warranty support packages. Contact us to discuss options."
+    }
+  ]
+}

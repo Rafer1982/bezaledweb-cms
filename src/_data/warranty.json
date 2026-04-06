@@ -1,0 +1,14 @@
+{
+  "covered": [
+    "Dead/stuck pixels",
+    "Cabinet power supply failures",
+    "LED module replacements",
+    "Control system hardware failures",
+    "Manufacturing defects"
+  ],
+  "not_covered": [
+    "Physical damage from improper handling",
+    "Water/weather damage outside IP specs",
+    "Modifications without Beza LED authorization"
+  ]
+}

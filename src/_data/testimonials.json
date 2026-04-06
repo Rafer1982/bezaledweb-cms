@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "name": "Pastor James R.",
+      "role": "Grace Community Church",
+      "quote": "The LED wall completely transformed our Sunday services. The congregation is more engaged than ever, and the installation was flawless.",
+      "initials": "JR",
+      "avatar_gradient": "magenta"
+    },
+    {
+      "name": "Carlos P.",
+      "role": "EventPro Productions",
+      "quote": "Beza LED delivered on every promise. The screen quality is incredible, support is responsive, and the financing made it possible for our budget.",
+      "initials": "CP",
+      "avatar_gradient": "blue"
+    },
+    {
+      "name": "Maria L.",
+      "role": "Southeast Regional Airport",
+      "quote": "We needed a reliable display for our airport terminal. Beza LED's team handled everything from design to installation. Zero issues in 2 years.",
+      "initials": "ML",
+      "avatar_gradient": "cyan"
+    }
+  ]
+}
