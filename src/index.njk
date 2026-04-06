@@ -4,7 +4,457 @@ pageTitle: "BEZALED — Premium LED Display Solutions | Miami, FL"
 metaDescription: "Premium LED displays for churches, virtual productions, airports, retail, and events. Turn-key installation, 5-year warranty, 24/7 US-based support. Miami, FL."
 ---
 
-<section style="padding:120px 20px;text-align:center">
-  <h1 style="color:white;font-family:var(--fd)">Test Page — Includes Working</h1>
-  <p style="color:var(--soft)">If you can see the nav and footer, includes are working.</p>
+<!-- ════ HERO ════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="/{{ hero.background_image }}" alt="Massive LED video wall displaying vibrant cyan and magenta visuals in a modern venue" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+  </div>
+  <div class="hero-accent-bar"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag fade-in"><div class="hero-tag-dot"></div><span>{{ hero.tag | safe }}</span></div>
+      <h1 class="hero-h1 fade-in delay-1">{{ hero.title_prefix }}<br>{{ hero.title_suffix }} <span class="word-rotator">{% for word in hero.rotating_words %}<span class="word{% if loop.first %} active{% endif %}">{{ word }}</span>{% endfor %}</span></h1>
+      <p class="hero-desc fade-in delay-2">{{ hero.description }}</p>
+      <div class="hero-btns fade-in delay-3">
+        <a href="{{ hero.cta_primary_href }}" class="btn-glass glass-m" style="text-decoration:none"><span class="blob"></span><span class="btn-inner"><svg class="btn-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>{{ hero.cta_primary_text }} &rarr;</span></a>
+        <a href="{{ hero.cta_secondary_href }}" class="btn-glass glass-c" style="text-decoration:none"><span class="blob"></span><span class="btn-inner"><svg class="btn-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>{{ hero.cta_secondary_text }}</span></a>
+      </div>
+      <div class="hero-proof fade-in delay-4">
+        <div class="hero-avatars">
+          <div class="av av-m">JR</div>
+          <div class="av av-b">CP</div>
+          <div class="av av-p">ML</div>
+          <div class="av av-c">AS</div>
+        </div>
+        <div class="hero-proof-text"><strong>{{ hero.proof_text }}</strong><span>{{ hero.proof_sub }}</span></div>
+        <div class="hero-proof-div"></div>
+        <div class="hero-proof-rating"><div class="hero-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><strong>{{ hero.rating_value }}</strong><span>{{ hero.rating_label }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRIP — inside hero, bottom -->
+  <div class="strip">
+    <div class="strip-inner">
+      {% for item in hero.strip_items %}
+      <div class="strip-item">
+        <div class="strip-row">
+          {% if loop.index == 1 %}
+          <div class="strip-icon" style="background:rgba(0,206,209,0.1);border:1px solid rgba(0,206,209,0.2)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00CED1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          {% elif loop.index == 2 %}
+          <div class="strip-icon" style="background:rgba(224,26,89,0.1);border:1px solid rgba(224,26,89,0.2)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E01A59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          {% elif loop.index == 3 %}
+          <div class="strip-icon" style="background:rgba(0,123,255,0.1);border:1px solid rgba(0,123,255,0.2)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#007BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+          </div>
+          {% elif loop.index == 4 %}
+          <div class="strip-icon" style="background:rgba(111,66,193,0.1);border:1px solid rgba(111,66,193,0.2)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6F42C1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          {% endif %}
+          <div class="strip-title">{{ item.title }}</div>
+        </div>
+        <div class="strip-desc">{{ item.description }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </section>
+
+<!-- Hero divider -->
+<div class="hero-divider" aria-hidden="true">
+  <div class="hero-divider-line"></div>
+  <div class="hero-divider-glow"></div>
+</div>
+
+
+<!-- ════ PRODUCTS ════ -->
+<section id="products" style="padding:80px 0">
+  <div class="container">
+    <div class="sec-tag">OUR PRODUCTS</div>
+    <h2 class="sec-title" style="margin-bottom:16px">LED Displays <em style="font-style:normal;background:linear-gradient(135deg,var(--M),var(--B));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Built to Perform</em></h2>
+    <p class="sec-sub">From fine-pitch indoor panels to weather-resistant outdoor displays &mdash; every Beza LED screen is designed for reliability, vibrancy, and long-term value.</p>
+
+    <div class="products-grid">
+
+      <!-- P2.5 Indoor Panel -->
+      <div class="glow-wrap"><div class="p-card">
+        <div class="p-card-img" style="background:var(--card-2)">
+          <div class="bg-orb" style="width:200px;height:200px;background:var(--C);top:-50px;left:-50px;opacity:0.35"></div>
+          <div class="bg-orb" style="width:160px;height:160px;background:var(--B);bottom:-40px;right:-40px;opacity:0.35"></div>
+          <span class="p-card-badge" style="background:rgba(0,206,209,0.15);color:var(--C);border:1px solid rgba(0,206,209,0.3)">FINE PITCH</span>
+          <div class="img-placeholder" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center; color: rgba(255,255,255,0.3);">
+              <div style="font-size:1.5rem; margin-bottom:6px;">&#128248;</div>
+              <div style="font-size:0.65rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[P2.5 INDOOR PANEL]</div>
+            </div>
+          </div>
+        </div>
+        <div class="p-card-body">
+          <div class="p-cat">INDOOR LED</div>
+          <div class="p-name">P2.5 Fine Pitch Indoor</div>
+          <div class="p-desc">Ultra-fine 2.5mm pixel pitch for broadcast studios, command centers, and close-viewing environments.</div>
+          <div class="p-tags">
+            <span class="tag tag-c">2.5mm</span>
+            <span class="tag tag-b">800 nits</span>
+            <span class="tag tag-p">3840Hz</span>
+          </div>
+          <div class="p-footer">
+            <div class="p-price"><span class="p-price-label">From</span>$999/mo</div>
+            <a href="/products/p25/" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Learn More &rarr;</span></a>
+          </div>
+        </div>
+      </div></div>
+
+      <!-- P2.9 Indoor Panel -->
+      <div class="glow-wrap"><div class="p-card">
+        <div class="p-card-img" style="background:var(--card-2)">
+          <div class="bg-orb" style="width:200px;height:200px;background:var(--B);top:-50px;left:-50px;opacity:0.4"></div>
+          <div class="bg-orb" style="width:160px;height:160px;background:var(--C);bottom:-40px;right:-40px;opacity:0.35"></div>
+          <span class="p-card-badge" style="background:rgba(0,123,255,0.15);color:var(--B);border:1px solid rgba(0,123,255,0.3)">PREMIUM</span>
+          <div class="img-placeholder" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center; color: rgba(255,255,255,0.3);">
+              <div style="font-size:1.5rem; margin-bottom:6px;">&#128248;</div>
+              <div style="font-size:0.65rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[P2.9 INDOOR PANEL]</div>
+            </div>
+          </div>
+        </div>
+        <div class="p-card-body">
+          <div class="p-cat">INDOOR LED</div>
+          <div class="p-name">P2.9 Premium Indoor</div>
+          <div class="p-desc">Versatile 2.9mm panel perfect for churches with live streaming, corporate boardrooms, and events.</div>
+          <div class="p-tags">
+            <span class="tag tag-b">2.9mm</span>
+            <span class="tag tag-c">1000 nits</span>
+            <span class="tag tag-p">3840Hz</span>
+          </div>
+          <div class="p-footer">
+            <div class="p-price"><span class="p-price-label">From</span>$999/mo</div>
+            <a href="/products/p29/" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Learn More &rarr;</span></a>
+          </div>
+        </div>
+      </div></div>
+
+      <!-- P3.9 Indoor Panel -->
+      <div class="glow-wrap"><div class="p-card">
+        <div class="p-card-img" style="background:var(--card-2)">
+          <div class="bg-orb" style="width:200px;height:200px;background:var(--M);top:-50px;left:-50px;opacity:0.4"></div>
+          <div class="bg-orb" style="width:160px;height:160px;background:var(--B);bottom:-40px;right:-40px;opacity:0.4"></div>
+          <span class="p-card-badge" style="background:linear-gradient(135deg,var(--M),var(--B));color:#fff">BEST SELLER</span>
+          <div class="img-placeholder" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center; color: rgba(255,255,255,0.3);">
+              <div style="font-size:1.5rem; margin-bottom:6px;">&#128248;</div>
+              <div style="font-size:0.65rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[P3.9 INDOOR PANEL]</div>
+            </div>
+          </div>
+        </div>
+        <div class="p-card-body">
+          <div class="p-cat">INDOOR LED</div>
+          <div class="p-name">P3.9 Best Seller Indoor</div>
+          <div class="p-desc">The most popular LED panel for churches, events, and corporate spaces. Stunning visuals at an unbeatable value.</div>
+          <div class="p-tags">
+            <span class="tag tag-m">3.9mm</span>
+            <span class="tag tag-c">1200 nits</span>
+            <span class="tag tag-b">Best Seller</span>
+          </div>
+          <div class="p-footer">
+            <div class="p-price"><span class="p-price-label">From</span>$999/mo</div>
+            <a href="/products/p39/" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Learn More &rarr;</span></a>
+          </div>
+        </div>
+      </div></div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ SOLUTIONS / MARKETS ════ -->
+<section id="markets">
+  <div class="container">
+    <div class="sec-tag">SOLUTIONS</div>
+    <h2 class="sec-title" style="margin-bottom:16px">LED Solutions for Every <em style="font-style:normal;background:linear-gradient(135deg,var(--C),var(--B));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Industry</em></h2>
+    <p class="sec-sub">Whether it's a Sunday service or a Super Bowl, Beza LED delivers display solutions tailored to your space and audience.</p>
+    <div class="markets-grid">
+
+      <!-- 1. House of Worship -->
+      <a href="/solutions/house-of-worship/" class="mkt-card mkt-card-m" style="text-decoration:none">
+        <span class="mkt-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E01A59" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 6px rgba(224,26,89,0.7))"><path d="M12 3L2 9v12h7v-6h6v6h7V9z"/><path d="M9 21V12h6v9"/><path d="M12 3v4"/><circle cx="12" cy="5" r="1" fill="#E01A59"/></svg>
+        </span>
+        <div class="mkt-name">House of Worship</div>
+        <div class="mkt-desc">Immersive LED video walls that transform the worship experience. Vivid visuals for every service, concert, and special event.</div>
+        <span class="mkt-link">Learn More &rarr;</span>
+      </a>
+
+      <!-- 2. Virtual Productions -->
+      <a href="/solutions/virtual-productions/" class="mkt-card mkt-card-b" style="text-decoration:none">
+        <span class="mkt-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#007BFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 6px rgba(0,123,255,0.7))"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </span>
+        <div class="mkt-name">Virtual Productions</div>
+        <div class="mkt-desc">LED volumes for film, TV, and commercial production. In-camera VFX with photorealistic backgrounds and real-time rendering.</div>
+        <span class="mkt-link">Learn More &rarr;</span>
+      </a>
+
+      <!-- 3. Airports & Transportation -->
+      <a href="/solutions/airports/" class="mkt-card mkt-card-c" style="text-decoration:none">
+        <span class="mkt-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00CED1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 6px rgba(0,206,209,0.7))"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+        </span>
+        <div class="mkt-name">Airports & Transportation</div>
+        <div class="mkt-desc">Real-time flight info and wayfinding displays built for 24/7 operation. High brightness, ultra-reliable, and easy to maintain.</div>
+        <span class="mkt-link">Learn More &rarr;</span>
+      </a>
+
+      <!-- 4. Shopping Malls & Retail -->
+      <a href="/solutions/shopping-malls/" class="mkt-card mkt-card-p" style="text-decoration:none">
+        <span class="mkt-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6F42C1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 6px rgba(111,66,193,0.7))"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </span>
+        <div class="mkt-name">Shopping Malls & Retail</div>
+        <div class="mkt-desc">Dynamic digital signage that drives engagement, foot traffic, and revenue. Indoor and outdoor retail display solutions.</div>
+        <span class="mkt-link">Learn More &rarr;</span>
+      </a>
+
+      <!-- 5. Trade Shows & Events -->
+      <a href="/solutions/trade-shows/" class="mkt-card mkt-card-m" style="text-decoration:none">
+        <span class="mkt-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E01A59" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 6px rgba(224,26,89,0.7))"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
+        </span>
+        <div class="mkt-name">Trade Shows & Events</div>
+        <div class="mkt-desc">Portable, high-impact LED walls for events, conventions, and exhibitions. Quick setup, stunning visuals, maximum brand impact.</div>
+        <span class="mkt-link">Learn More &rarr;</span>
+      </a>
+
+      <!-- 6. Financing -->
+      <a href="#contact" class="mkt-card" style="text-decoration:none;border:1px dashed rgba(255,255,255,0.2);background:transparent">
+        <span class="mkt-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </span>
+        <div class="mkt-name">Flexible Financing</div>
+        <div class="mkt-desc">Get the LED display your organization needs today with affordable monthly payments. 30+ lending partners available.</div>
+        <span class="mkt-link" style="color:var(--M)">Get a Quote &rarr;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ PROJECT GALLERY ════ -->
+<section id="gallery" style="padding:80px 0">
+  <div class="container">
+    <div class="sec-tag">OUR WORK</div>
+    <h2 class="sec-title" style="margin-bottom:16px">Installations That <em style="font-style:normal;background:linear-gradient(135deg,var(--M),var(--B),var(--C));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Speak for Themselves</em></h2>
+    <p class="sec-sub">From intimate worship spaces to massive concert stages — every project is designed, installed, and supported by the BEZALED team.</p>
+
+    <!-- Filter buttons -->
+    <div class="gallery-filters">
+      <button class="gf-btn active" data-filter="all"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> All Projects</button>
+      <button class="gf-btn" data-filter="worship"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3L2 9v12h7v-6h6v6h7V9z"/></svg> House of Worship</button>
+      <button class="gf-btn" data-filter="production"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg> Virtual Productions</button>
+      <button class="gf-btn" data-filter="airports"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> Airports</button>
+      <button class="gf-btn" data-filter="retail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg> Retail</button>
+      <button class="gf-btn" data-filter="events"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Trade Shows</button>
+    </div>
+    <div class="gallery-count" id="galCount">Showing all 15 projects</div>
+
+    <!-- Masonry grid -->
+    <div class="masonry-grid" id="masonryGallery">
+
+      <!-- ROW 1: WORSHIP -->
+      <div class="masonry-item m-tall" data-cat="worship">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Church Stage LED Wall]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Worship</span><div class="m-caption">Full Stage LED Wall — Grace Community Church, TX</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="masonry-item" data-cat="production">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[LED Volume Studio]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Production</span><div class="m-caption">LED Volume — Sunset Studios, LA</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="masonry-item m-short" data-cat="airports">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Airport FIDS Display]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Airport</span><div class="m-caption">FIDS Display — Southeast Regional Airport, FL</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <!-- ROW 2 -->
+      <div class="masonry-item" data-cat="retail">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Mall Video Wall]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Retail</span><div class="m-caption">Atrium Video Wall — Bal Harbour Shops, FL</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="masonry-item m-tall" data-cat="worship">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Worship Concert LED]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Worship</span><div class="m-caption">Worship Night — Elevation Church, NC</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="masonry-item" data-cat="events">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Trade Show Booth]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Trade Show</span><div class="m-caption">Exhibition Booth — CES 2025, Las Vegas</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <!-- ROW 3 -->
+      <div class="masonry-item m-short" data-cat="production">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[VP Behind the Scenes]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Production</span><div class="m-caption">VP Stage Calibration — Atlanta Studios, GA</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="masonry-item" data-cat="worship">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Small Church LED]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Worship</span><div class="m-caption">Sanctuary Display — New Hope Chapel, FL</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="masonry-item m-tall" data-cat="retail">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Retail Storefront LED]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Retail</span><div class="m-caption">Storefront Display — Design District, Miami</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <!-- ROW 4 -->
+      <div class="masonry-item" data-cat="airports">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Airport Wayfinding]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Airport</span><div class="m-caption">Wayfinding System — MIA Terminal D, FL</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="masonry-item m-short" data-cat="events">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Corporate Event LED]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Events</span><div class="m-caption">Annual Summit — Fortune 500 Company, NYC</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="masonry-item" data-cat="production">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Music Video VP]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Production</span><div class="m-caption">Music Video Shoot — VP Stage, Miami</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <!-- ROW 5 -->
+      <div class="masonry-item" data-cat="worship">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Youth Ministry LED]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Worship</span><div class="m-caption">Youth Center — Crossroads Church, OH</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="masonry-item m-short" data-cat="retail">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Restaurant Digital Menu]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Retail</span><div class="m-caption">Digital Menu — Gourmet Kitchen, Miami Beach</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="masonry-item" data-cat="events">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:16px;">
+          <div style="text-align:center;color:rgba(255,255,255,0.3)"><div style="font-size:1.5rem;margin-bottom:6px">&#128444;</div><div style="font-size:0.65rem;font-family:var(--fb);letter-spacing:2px;text-transform:uppercase">[Outdoor Concert LED]</div></div>
+        </div>
+        <div class="masonry-overlay"><span class="m-tag">Events</span><div class="m-caption">Festival Stage — Rolling Loud, Miami</div></div>
+        <span class="gallery-zoom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+    </div>
+
+    <!-- View all CTA -->
+    <div style="text-align:center;margin-top:48px">
+      <a href="/gallery/" class="btn-glass glass-c" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">View All Projects &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ STATS BAND ════ -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num" data-val="500" data-suffix="+" style="background:linear-gradient(135deg,var(--M),var(--B));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">500+</div>
+        <div class="stat-lbl">Installations</div>
+        <div class="stat-sub">across the United States</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-val="5" data-suffix="" style="background:linear-gradient(135deg,var(--B),var(--C));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">5</div>
+        <div class="stat-lbl">Year Warranty</div>
+        <div class="stat-sub">on every LED display</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="background:linear-gradient(135deg,var(--C),var(--P));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">24/7</div>
+        <div class="stat-lbl">Support</div>
+        <div class="stat-sub">US-based technical team</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-val="100" data-suffix="K+" style="background:linear-gradient(135deg,var(--P),var(--M));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">100K+</div>
+        <div class="stat-lbl">Hours Lifespan</div>
+        <div class="stat-sub">industry-leading durability</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ TESTIMONIALS ════ -->
+<section id="testimonials" style="padding:80px 0">
+  <div class="container">
+    <div class="sec-tag">TESTIMONIALS</div>
+    <h2 class="sec-title" style="margin-bottom:16px">Trusted by Organizations<br>Across the <em style="font-style:normal;background:linear-gradient(135deg,var(--M),var(--B),var(--C));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">U.S.</em></h2>
+    <p class="sec-sub">Over 500 organizations across the United States trust BEZALED for their most important installations.</p>
+    <div class="testi-grid">
+
+      {% for t in testimonials.items %}
+      <div class="testi-card">
+        <div class="testi-q">&ldquo;</div>
+        <div class="testi-text">{{ t.quote }}</div>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,{% if t.avatar_gradient == 'magenta' %}var(--M),var(--P){% elif t.avatar_gradient == 'blue' %}var(--B),var(--C){% elif t.avatar_gradient == 'cyan' %}var(--C),var(--P){% else %}var(--M),var(--B){% endif %})">{{ t.initials }}</div>
+          <div><div class="testi-name">{{ t.name }}</div><div class="testi-venue">{{ t.role }}</div></div>
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ CONTACT FORM ════ -->
+{% include "contact-section.njk" %}
