@@ -1,0 +1,281 @@
+backend:
+  name: github
+  repo: rafer1982/bezaledweb-cms
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  # ──────────────────────────────────────
+  # FILE COLLECTIONS (data files)
+  # ──────────────────────────────────────
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      # ── Site Settings ──
+      - name: "site"
+        label: "Site Settings"
+        file: "src/_data/site.json"
+        fields:
+          - { label: "Company Name", name: "company_name", widget: "string" }
+          - { label: "Company Sub", name: "company_sub", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Phone Display", name: "phone_display", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Support Email", name: "support_email", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "Address Full", name: "address_full", widget: "string" }
+          - { label: "Logo URL", name: "logo_url", widget: "string" }
+          - { label: "Footer Description", name: "footer_desc", widget: "text" }
+          - { label: "Response Time", name: "response_time", widget: "string" }
+
+      # ── Homepage Hero ──
+      - name: "hero"
+        label: "Homepage Hero"
+        file: "src/_data/hero.json"
+        fields:
+          - { label: "Tag", name: "tag", widget: "string" }
+          - { label: "Title Prefix", name: "title_prefix", widget: "string" }
+          - { label: "Title Suffix", name: "title_suffix", widget: "string" }
+          - label: "Rotating Words"
+            name: "rotating_words"
+            widget: "list"
+            field: { label: "Word", name: "word", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "CTA Primary Text", name: "cta_primary_text", widget: "string" }
+          - { label: "CTA Primary Href", name: "cta_primary_href", widget: "string" }
+          - { label: "CTA Secondary Text", name: "cta_secondary_text", widget: "string" }
+          - { label: "CTA Secondary Href", name: "cta_secondary_href", widget: "string" }
+          - { label: "Proof Text", name: "proof_text", widget: "string" }
+          - { label: "Proof Sub", name: "proof_sub", widget: "string" }
+          - { label: "Rating Value", name: "rating_value", widget: "string" }
+          - { label: "Rating Label", name: "rating_label", widget: "string" }
+          - { label: "Background Image", name: "background_image", widget: "image", required: false }
+          - label: "Strip Items"
+            name: "strip_items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+      # ── FAQ ──
+      - name: "faq"
+        label: "FAQ"
+        file: "src/_data/faq.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+
+      # ── Testimonials ──
+      - name: "testimonials"
+        label: "Testimonials"
+        file: "src/_data/testimonials.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Initials", name: "initials", widget: "string" }
+              - label: "Avatar Gradient"
+                name: "avatar_gradient"
+                widget: "select"
+                options: ["magenta", "blue", "cyan", "purple"]
+
+      # ── Stats ──
+      - name: "stats"
+        label: "Stats"
+        file: "src/_data/stats.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Value", name: "value", widget: "string" }
+              - { label: "Suffix", name: "suffix", widget: "string", required: false }
+              - { label: "Label", name: "label", widget: "string" }
+
+      # ── Values ──
+      - name: "values"
+        label: "Values"
+        file: "src/_data/values.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Icon Color"
+                name: "icon_color"
+                widget: "select"
+                options: ["cyan", "purple", "magenta", "blue"]
+
+      # ── Warranty ──
+      - name: "warranty"
+        label: "Warranty"
+        file: "src/_data/warranty.json"
+        fields:
+          - label: "Covered"
+            name: "covered"
+            widget: "list"
+            field: { label: "Item", name: "item", widget: "string" }
+          - label: "Not Covered"
+            name: "not_covered"
+            widget: "list"
+            field: { label: "Item", name: "item", widget: "string" }
+
+      # ── About ──
+      - name: "about"
+        label: "About"
+        file: "src/_data/about.json"
+        fields:
+          - { label: "Hero Tag", name: "hero_tag", widget: "string" }
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Sub", name: "hero_sub", widget: "text" }
+          - { label: "Story Tag", name: "story_tag", widget: "string" }
+          - { label: "Story Title", name: "story_title", widget: "string" }
+          - label: "Story Paragraphs"
+            name: "story_paragraphs"
+            widget: "list"
+            field: { label: "Paragraph", name: "paragraph", widget: "text" }
+          - { label: "US Based Tag", name: "us_based_tag", widget: "string" }
+          - { label: "US Based Title", name: "us_based_title", widget: "string" }
+          - { label: "US Based Text", name: "us_based_text", widget: "text" }
+          - { label: "Contact Tag", name: "contact_tag", widget: "string" }
+          - { label: "Contact Title", name: "contact_title", widget: "string" }
+          - { label: "Contact Sub", name: "contact_sub", widget: "text" }
+
+  # ──────────────────────────────────────
+  # FOLDER COLLECTIONS
+  # ──────────────────────────────────────
+
+  # ── Products ──
+  - name: "products"
+    label: "Products"
+    folder: "src/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Permalink", name: "permalink", widget: "string" }
+      - { label: "Page Title", name: "pageTitle", widget: "string" }
+      - { label: "Meta Description", name: "metaDescription", widget: "text" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Badge", name: "badge", widget: "string" }
+      - label: "Badge Color"
+        name: "badge_color"
+        widget: "select"
+        options: ["cyan", "magenta", "blue", "purple", "green"]
+      - { label: "Pixel Pitch", name: "pixel_pitch", widget: "string" }
+      - { label: "Brightness", name: "brightness", widget: "string" }
+      - { label: "Refresh Rate", name: "refresh_rate", widget: "string" }
+      - { label: "Price From", name: "price_from", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Hero Description", name: "hero_description", widget: "text" }
+      - { label: "Hero Tag", name: "hero_tag", widget: "string" }
+      - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+      - { label: "Card Image", name: "card_image", widget: "image", required: false }
+      - label: "Specs"
+        name: "specs"
+        widget: "list"
+        fields:
+          - { label: "Label", name: "label", widget: "string" }
+          - { label: "Value", name: "value", widget: "string" }
+      - label: "Applications"
+        name: "applications"
+        widget: "list"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+      - label: "Features"
+        name: "features"
+        widget: "list"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+      - { label: "Order", name: "order", widget: "number" }
+
+  # ── Gallery Projects ──
+  - name: "projects"
+    label: "Gallery Projects"
+    folder: "src/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["worship", "production", "airports", "retail", "events"]
+      - { label: "Tag Label", name: "tag_label", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - label: "Size Class"
+        name: "size_class"
+        widget: "select"
+        options: ["m-tall", "m-short"]
+      - { label: "Order", name: "order", widget: "number" }
+
+  # ── Solutions ──
+  - name: "solutions"
+    label: "Solutions"
+    folder: "src/solutions"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Permalink", name: "permalink", widget: "string" }
+      - { label: "Nav Label", name: "nav_label", widget: "string" }
+      - { label: "Page Title", name: "pageTitle", widget: "string" }
+      - { label: "Meta Description", name: "metaDescription", widget: "text" }
+      - { label: "Hero Tag", name: "hero_tag", widget: "string" }
+      - { label: "Hero Title", name: "hero_title", widget: "string" }
+      - { label: "Hero Description", name: "hero_description", widget: "text" }
+      - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+      - label: "Pain Section"
+        name: "pain_section"
+        widget: "object"
+        fields:
+          - { label: "Tag", name: "tag", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Paragraphs"
+            name: "paragraphs"
+            widget: "list"
+            field: { label: "Paragraph", name: "paragraph", widget: "text" }
+          - label: "Stats"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Value", name: "value", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+          - { label: "Image", name: "image", widget: "image", required: false }
+      - label: "Why Section"
+        name: "why_section"
+        widget: "object"
+        fields:
+          - { label: "Tag", name: "tag", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Image", name: "image", widget: "image", required: false }
+      - label: "Benefits"
+        name: "benefits"
+        widget: "list"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Icon Color"
+            name: "icon_color"
+            widget: "select"
+            options: ["cyan", "magenta", "blue", "purple", "green"]
+      - { label: "Order", name: "order", widget: "number" }
