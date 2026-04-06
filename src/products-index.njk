@@ -1,0 +1,294 @@
+---
+layout: base.njk
+pageTitle: "LED Display Products — BEZALED"
+metaDescription: "Browse BEZALED's complete LED display product lineup. Indoor panels from P2.5 to P3.9, outdoor displays, and custom solutions. 5-year warranty, financing from $999/mo."
+permalink: /products/
+---
+
+<!-- ════ 1. PAGE HERO ════ -->
+<section class="page-hero" style="position:relative;min-height:500px;display:flex;align-items:center;overflow:hidden;padding:0">
+  <div style="position:absolute;inset:0;z-index:0;background:var(--card-2)">
+    <div class="img-placeholder" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center; color: rgba(255,255,255,0.3);"><div style="font-size:2rem; margin-bottom:8px;">&#128248;</div><div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[PRODUCT CATALOG HERO]</div></div>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(7,9,14,0.88) 0%, rgba(7,9,14,0.55) 45%, rgba(7,9,14,0.2) 100%);z-index:1"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(7,9,14,0.5) 0%, transparent 30%, transparent 70%, rgba(7,9,14,0.85) 100%);z-index:1"></div>
+  </div>
+
+  <div class="hero-accent-bar" style="position:absolute;top:0;left:0;right:0;height:2px;z-index:3;background:linear-gradient(90deg,var(--M),var(--B),var(--C),var(--P),var(--M));background-size:200% 100%;animation:barShift 4s linear infinite"></div>
+
+  <div style="position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:clamp(120px,14vh,180px) clamp(24px,4vw,80px) 80px">
+    <div style="max-width:620px">
+      <div class="hero-tag" style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:50px;border:1px solid rgba(0,206,209,0.3);background:rgba(0,206,209,0.06);backdrop-filter:blur(12px);margin-bottom:14px;width:fit-content">
+        <div class="hero-tag-dot" style="width:7px;height:7px;border-radius:50%;background:var(--C);box-shadow:0 0 10px rgba(0,206,209,0.9);animation:pulse 2s ease-in-out infinite"></div>
+        <span style="font-size:0.71rem;color:var(--C);letter-spacing:2.5px;text-transform:uppercase;font-family:var(--fd);font-weight:600">OUR PRODUCTS</span>
+      </div>
+
+      <h1 style="font-family:var(--fd);font-weight:700;font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.08;letter-spacing:-0.02em;margin-bottom:18px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,0.9),0 0 60px rgba(0,0,0,0.7)">
+        LED Displays Built for <em style="font-style:normal;background:linear-gradient(135deg,#ffffff,#e0e7ff,#ffffff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none">Every Application</em>
+      </h1>
+
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.82);line-height:1.65;max-width:500px;margin-bottom:28px;text-shadow:0 1px 12px rgba(0,0,0,0.8)">
+        From fine-pitch indoor panels to weather-resistant outdoor displays &mdash; find the perfect LED solution for your space.
+      </p>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#contact" class="btn-glass glass-m" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Get a Custom Quote &rarr;</span></a>
+        <a href="#compare" class="btn-glass glass-c" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Compare Models</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 2. PRODUCT GRID ════ -->
+<section style="position:relative;z-index:2;padding:80px 0">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag" style="justify-content:center">Product Lineup</div>
+      <h2 class="sec-title" style="margin:0 auto 18px">Choose Your <em style="font-style:normal;background:linear-gradient(135deg,var(--M),var(--B),var(--C));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Display</em></h2>
+    </div>
+
+    <div class="products-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
+
+      {% for product in collections.products | sort(false, false, 'data.order') %}
+      <div class="glow-wrap"><div class="p-card">
+        <div class="p-card-img" style="background:var(--card-2)">
+          <div class="bg-orb" style="width:200px;height:200px;background:var(--C);top:-50px;left:-50px;opacity:0.35"></div>
+          <div class="bg-orb" style="width:160px;height:160px;background:var(--B);bottom:-40px;right:-40px;opacity:0.35"></div>
+          <span class="p-card-badge" style="{{ product.data.badge_style }}">{{ product.data.badge }}</span>
+          <div style="position:absolute;inset:0;overflow:hidden;display:flex;align-items:center;justify-content:center">
+            {% if product.data.card_image %}
+            <img src="{{ product.data.card_image }}" alt="{{ product.data.title }}" style="width:100%;height:100%;object-fit:cover">
+            {% else %}
+            <div class="img-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center">
+              <div style="text-align:center; color: rgba(255,255,255,0.3);"><div style="font-size:2rem; margin-bottom:8px;">&#128248;</div><div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[{{ product.data.slug | upper }} PRODUCT]</div></div>
+            </div>
+            {% endif %}
+          </div>
+          <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;z-index:2">
+            <div style="font-family:var(--fd);font-weight:700;font-size:0.7rem;color:var(--C);letter-spacing:2px">{{ product.data.category }}</div>
+          </div>
+        </div>
+        <div class="p-card-body">
+          <div class="p-cat">{{ product.data.category }}</div>
+          <div class="p-name">{{ product.data.title }}</div>
+          <div class="p-desc">{{ product.data.description }}</div>
+          <div class="p-tags">
+            <span class="tag tag-c">{{ product.data.badge }}</span>
+            <span class="tag tag-b">{{ product.data.pixel_pitch }}</span>
+            <span class="tag tag-g">{{ product.data.brightness }}</span>
+          </div>
+          <div class="p-footer">
+            <div class="p-price"><span class="p-price-label">From</span>Quote</div>
+            <a href="{{ product.data.permalink }}" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Learn more &rarr;</span></a>
+          </div>
+        </div>
+      </div></div>
+      {% endfor %}
+
+      <!-- Outdoor Display (Coming Soon) -->
+      <div class="glow-wrap"><div class="p-card">
+        <div class="p-card-img" style="background:var(--card-2)">
+          <div class="bg-orb" style="width:200px;height:200px;background:var(--P);top:-50px;left:-50px;opacity:0.3"></div>
+          <div class="bg-orb" style="width:160px;height:160px;background:var(--C);bottom:-40px;right:-40px;opacity:0.3"></div>
+          <span class="p-card-badge" style="background:rgba(111,66,193,0.15);color:var(--P);border:1px solid rgba(111,66,193,0.3)">COMING SOON</span>
+          <div style="position:absolute;inset:0;overflow:hidden;display:flex;align-items:center;justify-content:center">
+            <div class="img-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center">
+              <div style="text-align:center; color: rgba(255,255,255,0.3);"><div style="font-size:2rem; margin-bottom:8px;">&#128248;</div><div style="font-size:0.75rem; font-family: var(--fb); letter-spacing:2px; text-transform:uppercase;">[OUTDOOR DISPLAY]</div></div>
+            </div>
+          </div>
+          <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;z-index:2">
+            <div style="font-family:var(--fd);font-weight:700;font-size:0.7rem;color:var(--P);letter-spacing:2px">OUTDOOR SERIES</div>
+          </div>
+        </div>
+        <div class="p-card-body">
+          <div class="p-cat">Outdoor LED Panel</div>
+          <div class="p-name">Outdoor Displays</div>
+          <div class="p-desc">Weather-resistant displays for storefronts and outdoor venues. IP65 rated.</div>
+          <div class="p-tags">
+            <span class="tag tag-p">Outdoor</span>
+            <span class="tag tag-c">IP65</span>
+            <span class="tag tag-g">High Brightness</span>
+          </div>
+          <div class="p-footer">
+            <div class="p-price"><span class="p-price-label">From</span>Quote</div>
+            <a href="#contact" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Contact Us &rarr;</span></a>
+          </div>
+        </div>
+      </div></div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 3. COMPARISON TABLE ════ -->
+<section id="compare" style="position:relative;z-index:2;padding:80px 0;background:rgba(0,0,0,0.15)">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag" style="justify-content:center">Side-by-Side</div>
+      <h2 class="sec-title" style="margin:0 auto 18px">Compare <em style="font-style:normal;background:linear-gradient(135deg,var(--C),var(--B));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Models</em></h2>
+      <p class="sec-sub" style="margin:0 auto;text-align:center">Find the perfect panel for your viewing distance and application.</p>
+    </div>
+
+    <div style="background:var(--card);border:1px solid rgba(255,255,255,0.09);border-radius:20px;overflow:hidden;overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;min-width:600px">
+        <thead>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+            <th style="padding:20px 28px;text-align:left;font-family:var(--fd);font-weight:700;font-size:0.85rem;color:var(--soft)">Specification</th>
+            <th style="padding:20px 28px;text-align:center;font-family:var(--fd);font-weight:700;font-size:0.95rem;color:var(--C)">P2.5</th>
+            <th style="padding:20px 28px;text-align:center;font-family:var(--fd);font-weight:700;font-size:0.95rem;color:var(--B)">P2.9</th>
+            <th style="padding:20px 28px;text-align:center;font-family:var(--fd);font-weight:700;font-size:0.95rem">
+              <span style="background:linear-gradient(135deg,var(--M),var(--B));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">P3.9</span>
+              <div style="font-size:0.6rem;color:var(--M);margin-top:2px;-webkit-text-fill-color:var(--M)">BEST SELLER</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
+            <td style="padding:14px 28px;font-size:0.85rem;color:var(--muted);font-family:var(--fb)">Pixel Pitch</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">2.5mm</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">2.9mm</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">3.9mm</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.015)">
+            <td style="padding:14px 28px;font-size:0.85rem;color:var(--muted);font-family:var(--fb)">Brightness</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">800 nits</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">1000 nits</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">1200 nits</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
+            <td style="padding:14px 28px;font-size:0.85rem;color:var(--muted);font-family:var(--fb)">Refresh Rate</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">3840Hz</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">3840Hz</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">3840Hz</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.015)">
+            <td style="padding:14px 28px;font-size:0.85rem;color:var(--muted);font-family:var(--fb)">Cabinet Weight</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">9 kg</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">8 kg</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">7.5 kg</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
+            <td style="padding:14px 28px;font-size:0.85rem;color:var(--muted);font-family:var(--fb)">Power (max)</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">&le;180W/m&sup2;</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">&le;195W/m&sup2;</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--white);font-family:var(--fd);text-align:center">&le;210W/m&sup2;</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.015)">
+            <td style="padding:14px 28px;font-size:0.85rem;color:var(--muted);font-family:var(--fb)">Ideal Distance</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--C);font-family:var(--fd);text-align:center">&lt; 3m</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--B);font-family:var(--fd);text-align:center">3&ndash;4m</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--M);font-family:var(--fd);text-align:center">4m+</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
+            <td style="padding:14px 28px;font-size:0.85rem;color:var(--muted);font-family:var(--fb)">Warranty</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--C);font-family:var(--fd);text-align:center">5 Years</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--C);font-family:var(--fd);text-align:center">5 Years</td>
+            <td style="padding:14px 28px;font-size:0.85rem;font-weight:600;color:var(--C);font-family:var(--fd);text-align:center">5 Years</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 28px"></td>
+            <td style="padding:14px 28px;text-align:center"><a href="/products/p25/" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">View P2.5</span></a></td>
+            <td style="padding:14px 28px;text-align:center"><a href="/products/p29/" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">View P2.9</span></a></td>
+            <td style="padding:14px 28px;text-align:center"><a href="/products/p39/" class="btn-glass glass-sm glass-m" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">View P3.9</span></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 4. DECISION GUIDE ════ -->
+<section style="position:relative;z-index:2;padding:80px 0">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag" style="justify-content:center">Buying Guide</div>
+      <h2 class="sec-title" style="margin:0 auto 18px">Which Display Is <em style="font-style:normal;background:linear-gradient(135deg,var(--M),var(--B));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Right For You?</em></h2>
+      <p class="sec-sub" style="margin:0 auto;text-align:center">The ideal pixel pitch depends on your viewing distance. Here's a quick guide.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <!-- < 3m -->
+      <div style="background:var(--card);border:1px solid rgba(0,206,209,0.15);border-radius:20px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(0,206,209,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(0,206,209,0.15)'">
+        <div style="font-family:var(--fd);font-weight:700;font-size:2.4rem;color:var(--C);margin-bottom:4px;line-height:1">&lt;3m</div>
+        <div style="font-family:var(--fd);font-weight:600;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:16px">VIEWING DISTANCE</div>
+        <div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">P2.5 Fine Pitch</div>
+        <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:16px">Broadcast studios, command centers, conference rooms, museums.</div>
+        <a href="/products/p25/" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">View P2.5 &rarr;</span></a>
+      </div>
+      <!-- 3-4m -->
+      <div style="background:var(--card);border:1px solid rgba(0,123,255,0.15);border-radius:20px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(0,123,255,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(0,123,255,0.15)'">
+        <div style="font-family:var(--fd);font-weight:700;font-size:2.4rem;color:var(--B);margin-bottom:4px;line-height:1">3&ndash;4m</div>
+        <div style="font-family:var(--fd);font-weight:600;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:16px">VIEWING DISTANCE</div>
+        <div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">P2.9 Premium</div>
+        <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:16px">Live streaming, corporate boardrooms, mid-size houses of worship.</div>
+        <a href="/products/p29/" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">View P2.9 &rarr;</span></a>
+      </div>
+      <!-- 4m+ -->
+      <div style="background:var(--card);border:1px solid rgba(224,26,89,0.15);border-radius:20px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(224,26,89,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(224,26,89,0.15)'">
+        <div style="font-family:var(--fd);font-weight:700;font-size:2.4rem;color:var(--M);margin-bottom:4px;line-height:1">4m+</div>
+        <div style="font-family:var(--fd);font-weight:600;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:16px">VIEWING DISTANCE</div>
+        <div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">P3.9 Best Seller</div>
+        <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:16px">Churches, events, concerts, large corporate spaces, retail.</div>
+        <a href="/products/p39/" class="btn-glass glass-sm glass-m" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">View P3.9 &rarr;</span></a>
+      </div>
+      <!-- Outdoor -->
+      <div style="background:var(--card);border:1px solid rgba(111,66,193,0.15);border-radius:20px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(111,66,193,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(111,66,193,0.15)'">
+        <div style="font-family:var(--fd);font-weight:700;font-size:2.4rem;color:var(--P);margin-bottom:4px;line-height:1">&#9728;</div>
+        <div style="font-family:var(--fd);font-weight:600;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:16px">OUTDOOR</div>
+        <div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">Contact Us</div>
+        <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:16px">Storefronts, outdoor venues, stadiums. Weather-resistant IP65 rated.</div>
+        <a href="#contact" class="btn-glass glass-sm" style="text-decoration:none"><span class="blob"></span><span class="btn-inner">Get Quote &rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 5. THE BEZALED DIFFERENCE ════ -->
+<section style="position:relative;z-index:2;padding:80px 0;background:rgba(0,0,0,0.15)">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag" style="justify-content:center">Why BEZALED</div>
+      <h2 class="sec-title" style="margin:0 auto 18px">The Beza LED <em style="font-style:normal;background:linear-gradient(135deg,var(--M),var(--B),var(--C));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Difference</em></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <div style="background:linear-gradient(160deg,rgba(22,26,38,1),rgba(16,19,30,1));border:1px solid rgba(0,206,209,0.15);border-radius:22px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(0,206,209,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(0,206,209,0.15)'"><div style="width:56px;height:56px;border-radius:16px;background:rgba(0,206,209,0.1);border:1px solid rgba(0,206,209,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00CED1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">5-Year Warranty</div><div style="font-size:0.82rem;color:var(--muted);line-height:1.6">Industry-leading coverage on all panels, controllers, and power supplies.</div></div>
+      <div style="background:linear-gradient(160deg,rgba(22,26,38,1),rgba(16,19,30,1));border:1px solid rgba(224,26,89,0.15);border-radius:22px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(224,26,89,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(224,26,89,0.15)'"><div style="width:56px;height:56px;border-radius:16px;background:rgba(224,26,89,0.1);border:1px solid rgba(224,26,89,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E01A59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div><div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">24/7 US-Based Support</div><div style="font-size:0.82rem;color:var(--muted);line-height:1.6">Real humans answering your calls, day or night.</div></div>
+      <div style="background:linear-gradient(160deg,rgba(22,26,38,1),rgba(16,19,30,1));border:1px solid rgba(0,123,255,0.15);border-radius:22px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(0,123,255,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(0,123,255,0.15)'"><div style="width:56px;height:56px;border-radius:16px;background:rgba(0,123,255,0.1);border:1px solid rgba(0,123,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#007BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">Financing from $999/mo</div><div style="font-size:0.82rem;color:var(--muted);line-height:1.6">Flexible financing options. Get your LED wall today and pay over time.</div></div>
+      <div style="background:linear-gradient(160deg,rgba(22,26,38,1),rgba(16,19,30,1));border:1px solid rgba(111,66,193,0.15);border-radius:22px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(111,66,193,0.4)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(111,66,193,0.15)'"><div style="width:56px;height:56px;border-radius:16px;background:rgba(111,66,193,0.1);border:1px solid rgba(111,66,193,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6F42C1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div style="font-family:var(--fd);font-weight:700;font-size:1.1rem;margin-bottom:8px">Turn-Key Installation</div><div style="font-size:0.82rem;color:var(--muted);line-height:1.6">Site survey, installation, calibration, and training &mdash; all handled by our team.</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ 6. CONTACT / QUOTE FORM ════ -->
+<section id="contact" style="position:relative;z-index:2;padding:80px 0">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <div class="sec-tag">Request a Quote</div>
+        <h2 class="sec-title" style="margin-bottom:16px">Not sure which<br><em style="font-style:normal;background:linear-gradient(135deg,var(--M),var(--B),var(--C));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">display?</em></h2>
+        <p class="sec-sub" style="margin-bottom:40px">Tell us about your space and our team will recommend the perfect LED solution with a custom proposal within 24 hours.</p>
+        <div class="contact-info-item"><div class="contact-info-icon" style="background:rgba(0,206,209,0.1);border:1px solid rgba(0,206,209,0.2)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00CED1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="contact-info-title">Direct Phone</div><div class="contact-info-text">+1 (786) 826-7016</div></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon" style="background:rgba(224,26,89,0.1);border:1px solid rgba(224,26,89,0.2)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E01A59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-info-title">Email</div><div class="contact-info-text">info@bezaled.com</div></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon" style="background:rgba(0,123,255,0.1);border:1px solid rgba(0,123,255,0.2)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#007BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-info-title">Address</div><div class="contact-info-text">Miami, FL &mdash; Nationwide installation coverage</div></div></div>
+        <div style="margin-top:32px;padding:20px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><div style="width:8px;height:8px;border-radius:50%;background:#4CAF50;box-shadow:0 0 8px rgba(76,175,80,0.8)"></div><span style="font-family:var(--fd);font-weight:700;font-size:0.82rem">Response within 24 hours</span></div><div style="font-size:0.78rem;color:var(--soft);line-height:1.6">Our technical team reviews every request and prepares a detailed proposal tailored to your space.</div></div>
+      </div>
+      <div class="contact-form-card">
+        <div class="contact-form-title">Get Your Custom Quote</div>
+        <div class="contact-form-sub">Tell us about your project and we'll recommend the best LED display.</div>
+        <form class="lead-form" action="#" method="POST" onsubmit="event.preventDefault();">
+          <div class="form-row"><div class="form-group"><label class="form-label">Full Name <span class="req">*</span></label><input type="text" class="form-input" name="name" placeholder="John Smith" required></div><div class="form-group"><label class="form-label">Email <span class="req">*</span></label><input type="email" class="form-input" name="email" placeholder="john@company.com" required></div></div>
+          <div class="form-row"><div class="form-group"><label class="form-label">Phone</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000"></div><div class="form-group"><label class="form-label">Organization</label><input type="text" class="form-input" name="organization" placeholder="Your church or company"></div></div>
+          <div class="form-row"><div class="form-group full"><label class="form-label">Message</label><textarea class="form-textarea" name="message" placeholder="Tell us about your space, viewing distance, dimensions, and what you're looking for..."></textarea></div></div>
+          <button type="submit" class="btn-glass glass-full glass-m"><span class="blob"></span><span class="btn-inner">Get Your Custom Quote &rarr;</span></button>
+          <div class="form-disclaimer">By submitting this form you agree to our terms of service and privacy policy. We never share your information with third parties.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
