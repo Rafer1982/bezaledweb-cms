@@ -1,7 +1,4 @@
 {
-  "tag": "PREMIUM LED DISPLAYS &middot; ALL ACROSS THE U.S.",
-  "title_prefix": "Premium LED displays",
-  "title_suffix": "for your",
   "rotating_words": [
     "church",
     "stadium",
@@ -9,16 +6,17 @@
     "campus",
     "event"
   ],
-  "description": "Large-format LED displays for churches, stadiums, concerts, and corporate spaces. 48-hour installation, 5-year warranty, 24/7 support.",
-  "cta_primary_text": "Explore Solutions",
-  "cta_primary_href": "#products",
-  "cta_secondary_text": "Request a Quote",
-  "cta_secondary_href": "#contact",
-  "proof_text": "+500 projects",
   "proof_sub": "across the U.S.",
+  "cta_secondary_href": "#contact",
+  "cta_secondary_text": "Request a Quote",
+  "proof_text": "+500 projects",
+  "background_image": "assets/images/hero-led-wall-venue.png",
   "rating_value": "5/5",
   "rating_label": "satisfaction",
-  "background_image": "assets/images/hero-led-wall-venue.png",
+  "cta_primary_href": "#products",
+  "title_suffix": "for your",
+  "title_prefix": "Premium LED displays!",
+  "cta_primary_text": "Explore Solutions",
   "strip_items": [
     {
       "title": "5-Year Warranty",
@@ -36,5 +34,7 @@
       "title": "Ready to Ship",
       "description": "LED screens ready to ship! Fast delivery on in-stock LED video walls, subject to carrier times."
     }
-  ]
+  ],
+  "tag": "PREMIUM LED DISPLAYS &middot; ALL ACROSS THE U.S.",
+  "description": "Large-format LED displays for churches, stadiums, concerts, and corporate spaces. 48-hour installation, 5-year warranty, 24/7 support."
 }
