@@ -8,6 +8,9 @@ backend:
 media_folder: "assets/images"
 public_folder: "/assets/images"
 
+logo:
+  src: https://cdn.prod.website-files.com/674e009e9bfac4c4e5dfdbd1/67619ad900bd4585c933de8e_Logo-Negro.png
+
 collections:
   # ──────────────────────────────────────
   # FILE COLLECTIONS (data files)
@@ -15,6 +18,7 @@ collections:
 
   - name: "settings"
     label: "Site Settings"
+    icon: settings
     files:
       # ── Site Settings ──
       - name: "site"
@@ -201,15 +205,16 @@ collections:
   # ── Products ──
   - name: "products"
     label: "Products"
+    icon: storefront
     folder: "src/products"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Permalink", name: "permalink", widget: "string" }
-      - { label: "Page Title", name: "pageTitle", widget: "string" }
-      - { label: "Meta Description", name: "metaDescription", widget: "text" }
+      - { label: "Slug", name: "slug", widget: "string", preview: false }
+      - { label: "Permalink", name: "permalink", widget: "string", preview: false }
+      - { label: "Page Title", name: "pageTitle", widget: "string", preview: false }
+      - { label: "Meta Description", name: "metaDescription", widget: "text", preview: false }
       - { label: "Category", name: "category", widget: "string" }
       - { label: "Badge", name: "badge", widget: "string" }
       - label: "Badge Color"
@@ -243,11 +248,12 @@ collections:
         fields:
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
-      - { label: "Order", name: "order", widget: "number" }
+      - { label: "Order", name: "order", widget: "number", preview: false }
 
   # ── Gallery Projects ──
   - name: "projects"
     label: "Gallery Projects"
+    icon: photo_library
     folder: "src/projects"
     create: true
     slug: "{{slug}}"
@@ -263,21 +269,22 @@ collections:
         name: "size_class"
         widget: "select"
         options: ["m-tall", "m-short"]
-      - { label: "Order", name: "order", widget: "number" }
+      - { label: "Order", name: "order", widget: "number", preview: false }
 
   # ── Solutions ──
   - name: "solutions"
     label: "Solutions"
+    icon: lightbulb
     folder: "src/solutions"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Permalink", name: "permalink", widget: "string" }
-      - { label: "Nav Label", name: "nav_label", widget: "string" }
-      - { label: "Page Title", name: "pageTitle", widget: "string" }
-      - { label: "Meta Description", name: "metaDescription", widget: "text" }
+      - { label: "Slug", name: "slug", widget: "string", preview: false }
+      - { label: "Permalink", name: "permalink", widget: "string", preview: false }
+      - { label: "Nav Label", name: "nav_label", widget: "string", preview: false }
+      - { label: "Page Title", name: "pageTitle", widget: "string", preview: false }
+      - { label: "Meta Description", name: "metaDescription", widget: "text", preview: false }
       - { label: "Hero Tag", name: "hero_tag", widget: "string" }
       - { label: "Hero Title", name: "hero_title", widget: "string" }
       - { label: "Hero Description", name: "hero_description", widget: "text" }
@@ -317,4 +324,4 @@ collections:
             name: "icon_color"
             widget: "select"
             options: ["cyan", "magenta", "blue", "purple", "green"]
-      - { label: "Order", name: "order", widget: "number" }
+      - { label: "Order", name: "order", widget: "number", preview: false }

@@ -5,8 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>BEZALED Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /*
+     * BEZALED CMS — Custom Admin Theme
+     * Dark palette matching the main site: deep navy, magenta/cyan accents
+     */
+
+    /* ── Logo inversion (original is dark on transparent) ── */
+    [class*="logo"] img,
+    header img[alt*="logo" i],
+    nav img,
+    .sui img {
+      filter: invert(1) drop-shadow(0 0 6px rgba(0,206,209,0.4));
+    }
+
+    /* ── Global color overrides ── */
+    :root {
+      --sui-primary-accent-color: #E01A59;
+      --sui-primary-accent-color-light: #ff2d6f;
+      --sui-primary-accent-color-inverted: #ffffff;
+    }
+
+    /* ── Dark mode tweaks (Sveltia has built-in dark mode) ── */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sui-primary-accent-color: #E01A59;
+        --sui-primary-accent-color-light: #ff2d6f;
+      }
+    }
+
+    /* ── Force dark mode always ── */
+    html, body {
+      color-scheme: dark;
+    }
+
+    /* ── Sidebar / navigation styling ── */
+    aside, [role="navigation"], nav {
+      border-color: rgba(255,255,255,0.08) !important;
+    }
+
+    /* ── Button accent colors ── */
+    button[class*="primary"],
+    a[class*="primary"],
+    [class*="primary-button"] {
+      background: linear-gradient(135deg, #E01A59, #007BFF) !important;
+      border: none !important;
+      color: #fff !important;
+    }
+
+    button[class*="primary"]:hover,
+    a[class*="primary"]:hover,
+    [class*="primary-button"]:hover {
+      background: linear-gradient(135deg, #ff2d6f, #339fff) !important;
+    }
+
+    /* ── Selection / focus ring color ── */
+    *:focus-visible {
+      outline-color: #E01A59 !important;
+    }
+
+    /* ── Links ── */
+    a:not([class]) {
+      color: #00CED1;
+    }
+
+    /* ── Custom scrollbar (dark theme) ── */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.2);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(224,26,89,0.3);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(224,26,89,0.5);
+    }
+
+    /* ── Loading screen branding ── */
+    [class*="loading"], [class*="splash"] {
+      background: #07090E !important;
+    }
+  </style>
 </head>
 <body>
   <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+  <script type="module">
+    // Wait for CMS to initialize, then register preview styles
+    const waitForCMS = () => {
+      if (window.CMS) {
+        // Google Fonts used by the site
+        CMS.registerPreviewStyle(
+          'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap'
+        );
+        // Site stylesheets
+        CMS.registerPreviewStyle('/assets/css/main.css');
+        CMS.registerPreviewStyle('/assets/css/components.css');
+      } else {
+        setTimeout(waitForCMS, 100);
+      }
+    };
+    waitForCMS();
+  </script>
 </body>
 </html>
