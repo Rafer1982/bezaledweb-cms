@@ -8,8 +8,7 @@ backend:
 media_folder: "assets/images"
 public_folder: "/assets/images"
 
-logo:
-  src: https://cdn.prod.website-files.com/674e009e9bfac4c4e5dfdbd1/67619ad900bd4585c933de8e_Logo-Negro.png
+logo_url: https://cdn.prod.website-files.com/674e009e9bfac4c4e5dfdbd1/67619ad900bd4585c933de8e_Logo-Negro.png
 
 collections:
   # ──────────────────────────────────────
