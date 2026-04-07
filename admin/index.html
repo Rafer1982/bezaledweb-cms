@@ -526,12 +526,7 @@
       if (sidebar) {
         sidebar.querySelectorAll('a').forEach(function(link) {
           if (link.dataset.iconed) return;
-          // Get raw text without any previously injected emoji
-          var textNode = '';
-          link.childNodes.forEach(function(n) {
-            if (n.nodeType === 3) textNode += n.textContent.trim();
-          });
-          // Try matching by known names
+          // Match by known collection names
           var icon = null;
           Object.keys(collectionIcons).forEach(function(name) {
             if (link.textContent.indexOf(name) !== -1) icon = collectionIcons[name];
@@ -541,6 +536,11 @@
           // Hide the default SVG icon
           var svg = link.querySelector('svg');
           if (svg) svg.style.display = 'none';
+          // Add emoji before the text
+          var emojiSpan = document.createElement('span');
+          emojiSpan.textContent = icon + ' ';
+          emojiSpan.style.fontSize = '1.15em';
+          link.insertBefore(emojiSpan, link.firstChild);
         });
       }
 
