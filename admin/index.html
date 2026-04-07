@@ -7,95 +7,99 @@
   <title>BEZALED Admin</title>
 </head>
 <body>
-  <!-- DecapCMS (supports registerPreviewTemplate) -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
   <script>
     // ═══════════════════════════════════════════
-    // 1. PREVIEW STYLES
+    // PREVIEW STYLES
     // ═══════════════════════════════════════════
 
-    // Google Fonts
     CMS.registerPreviewStyle(
       'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap'
     );
 
-    // Site CSS
-    CMS.registerPreviewStyle('/assets/css/main.css');
-    CMS.registerPreviewStyle('/assets/css/components.css');
-
-    // Preview-specific overrides (dark bg, no animations)
     CMS.registerPreviewStyle([
+      '*, *::before, *::after { box-sizing: border-box; margin: 0; }',
       ':root {',
       '  --bg: #07090E; --card: #1a1f2e; --card-2: #1e2438;',
       '  --white: #FFFFFF; --muted: #B8BBC8; --soft: #9498AC;',
       '  --M: #E01A59; --B: #007BFF; --P: #6F42C1; --C: #00CED1;',
-      '  --r: 20px; --fd: "Space Grotesk", sans-serif; --fb: "Inter", sans-serif;',
+      '  --fd: "Space Grotesk", sans-serif; --fb: "Inter", sans-serif;',
       '}',
-      'body {',
-      '  background: #060a14 !important; color: #fff;',
-      '  font-family: "Inter", sans-serif; margin: 0; padding: 0;',
-      '  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px) !important;',
-      '  background-size: 24px 24px !important;',
-      '}',
-      '* { box-sizing: border-box; }',
-      '.pv-wrap { padding: 40px 24px; max-width: 1200px; margin: 0 auto; }',
-      '.pv-tag { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;',
+      'body { background: #060a14; color: #fff; font-family: var(--fb);',
+      '  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);',
+      '  background-size: 24px 24px; }',
+
+      /* Layout */
+      '.pw { padding: 32px 28px; max-width: 900px; margin: 0 auto; }',
+      '.ps { margin-bottom: 40px; }',
+
+      /* Tag pill */
+      '.pt { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px;',
       '  border-radius: 50px; border: 1px solid rgba(0,206,209,0.3); background: rgba(0,206,209,0.06);',
-      '  margin-bottom: 14px; width: fit-content; }',
-      '.pv-tag-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--C);',
-      '  box-shadow: 0 0 10px rgba(0,206,209,0.9); }',
-      '.pv-tag-text { font-size: 0.71rem; color: var(--C); letter-spacing: 2.5px;',
+      '  margin-bottom: 12px; }',
+      '.pt-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--C);',
+      '  box-shadow: 0 0 8px rgba(0,206,209,0.8); }',
+      '.pt-text { font-size: 0.68rem; color: var(--C); letter-spacing: 2.5px;',
       '  text-transform: uppercase; font-family: var(--fd); font-weight: 600; }',
-      '.pv-title { font-family: var(--fd); font-weight: 700; font-size: clamp(2rem,3.5vw,3.2rem);',
-      '  line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 18px; }',
-      '.pv-sub { font-size: 0.92rem; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }',
-      '.pv-card { background: var(--card); border: 1px solid rgba(255,255,255,0.09);',
-      '  border-radius: 20px; padding: 32px 24px; margin-bottom: 16px; }',
-      '.pv-grid { display: grid; gap: 20px; margin-bottom: 32px; }',
-      '.pv-grid-2 { grid-template-columns: 1fr 1fr; }',
-      '.pv-grid-3 { grid-template-columns: repeat(3, 1fr); }',
-      '.pv-grid-4 { grid-template-columns: repeat(4, 1fr); }',
-      '.pv-hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover;',
-      '  border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px; }',
-      '.pv-badge { display: inline-block; padding: 6px 14px; border-radius: 10px;',
-      '  font-family: var(--fd); font-weight: 700; font-size: 0.75rem; margin-right: 8px; margin-bottom: 8px; }',
-      '.pv-spec-row { display: flex; justify-content: space-between; padding: 12px 0;',
-      '  border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem; }',
-      '.pv-spec-label { color: var(--muted); }',
-      '.pv-spec-value { font-weight: 600; font-family: var(--fd); }',
-      '.pv-stat { font-family: var(--fd); font-weight: 700; font-size: 2rem;',
-      '  background: linear-gradient(135deg, var(--M), var(--B));',
-      '  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }',
-      '.pv-section { margin-bottom: 48px; }',
-      '.pv-section-title { font-family: var(--fd); font-weight: 700; font-size: 0.7rem;',
+
+      /* Typography */
+      '.ph1 { font-family: var(--fd); font-weight: 700; font-size: 2.2rem;',
+      '  line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; }',
+      '.ph2 { font-family: var(--fd); font-weight: 700; font-size: 1.5rem;',
+      '  line-height: 1.2; margin-bottom: 14px; }',
+      '.pp { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }',
+      '.psec { font-family: var(--fd); font-weight: 600; font-size: 0.68rem;',
       '  letter-spacing: 2.5px; text-transform: uppercase; color: var(--C);',
-      '  margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }',
-      '.pv-section-title::before { content: ""; width: 24px; height: 1px; background: var(--C); }',
-      '.pv-h2 { font-family: var(--fd); font-weight: 700; font-size: 1.8rem;',
-      '  margin-bottom: 16px; line-height: 1.2; }',
-      '.pv-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }',
-      '.pv-gallery-item { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }',
-      '.pv-gallery-item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }',
-      '.pv-gallery-caption { padding: 10px 12px; background: var(--card); font-size: 0.8rem; }',
-      '.pv-faq-q { font-family: var(--fd); font-weight: 700; font-size: 1rem;',
-      '  margin-bottom: 8px; color: var(--white); }',
-      '.pv-faq-a { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }',
-      '.pv-testimonial { text-align: center; }',
-      '.pv-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex;',
-      '  align-items: center; justify-content: center; margin: 0 auto 12px;',
-      '  font-family: var(--fd); font-weight: 700; font-size: 0.85rem; }',
-      '.pv-quote { font-size: 0.88rem; color: var(--muted); line-height: 1.7;',
-      '  font-style: italic; margin-bottom: 12px; }',
-      '@media (max-width: 768px) {',
-      '  .pv-grid-3, .pv-grid-4 { grid-template-columns: 1fr 1fr; }',
-      '  .pv-grid-2 { grid-template-columns: 1fr; }',
-      '}',
+      '  margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }',
+      '.psec::before { content: ""; width: 20px; height: 1px; background: var(--C); }',
+
+      /* Cards */
+      '.pc { background: var(--card); border: 1px solid rgba(255,255,255,0.09);',
+      '  border-radius: 16px; padding: 24px 20px; }',
+
+      /* Grid */
+      '.pg { display: grid; gap: 14px; }',
+      '.pg2 { grid-template-columns: 1fr 1fr; }',
+      '.pg3 { grid-template-columns: repeat(3, 1fr); }',
+      '.pg4 { grid-template-columns: repeat(4, 1fr); }',
+
+      /* Image */
+      '.pi { width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08);',
+      '  object-fit: cover; display: block; }',
+      '.pi-placeholder { border-radius: 16px; background: linear-gradient(135deg, var(--card), var(--card-2));',
+      '  border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center;',
+      '  justify-content: center; color: rgba(255,255,255,0.2); font-size: 0.75rem;',
+      '  font-family: var(--fd); letter-spacing: 2px; text-transform: uppercase; }',
+
+      /* Badge */
+      '.pb { display: inline-block; padding: 5px 12px; border-radius: 8px;',
+      '  font-family: var(--fd); font-weight: 600; font-size: 0.72rem;',
+      '  margin-right: 6px; margin-bottom: 6px; }',
+      '.pb-ghost { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; }',
+
+      /* Spec row */
+      '.psr { display: flex; justify-content: space-between; padding: 10px 0;',
+      '  border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.82rem; }',
+      '.psr:last-child { border-bottom: none; }',
+      '.psr-l { color: var(--muted); font-family: var(--fb); }',
+      '.psr-v { font-weight: 600; font-family: var(--fd); color: #fff; }',
+
+      /* Stat */
+      '.pstat { font-family: var(--fd); font-weight: 700; font-size: 1.8rem; line-height: 1; margin-bottom: 4px; }',
+
+      /* Testimonial avatar */
+      '.pav { width: 42px; height: 42px; border-radius: 50%; display: flex;',
+      '  align-items: center; justify-content: center; margin: 0 auto 10px;',
+      '  font-family: var(--fd); font-weight: 700; font-size: 0.8rem; color: #fff; }',
+
+      /* Responsive */
+      '@media (max-width: 600px) { .pg2,.pg3,.pg4 { grid-template-columns: 1fr; } }',
     ].join('\n'), { raw: true });
 
 
     // ═══════════════════════════════════════════
-    // 2. COLOR HELPERS
+    // HELPERS
     // ═══════════════════════════════════════════
 
     var colorMap = {
@@ -106,481 +110,389 @@
       green:   { rgb: '76,175,80',   hex: '#4CAF50' }
     };
 
-    function getColor(name) {
-      return colorMap[name] || colorMap.cyan;
+    function gc(name) { return colorMap[name] || colorMap.cyan; }
+
+    // Decode HTML entities (&middot; -> ·, &mdash; -> —, etc.)
+    function decode(str) {
+      if (!str) return '';
+      var el = document.createElement('textarea');
+      el.innerHTML = str;
+      return el.value;
+    }
+
+    // Render image or placeholder
+    function img(asset, alt, ratio) {
+      if (asset) {
+        return h('img', { className: 'pi', src: asset.toString(), alt: alt || '',
+          style: { aspectRatio: ratio || '16/9', marginBottom: '20px' } });
+      }
+      return h('div', { className: 'pi-placeholder',
+        style: { aspectRatio: ratio || '16/9', marginBottom: '20px' } },
+        '\uD83D\uDCF7 ' + (alt || 'Image'));
+    }
+
+    // Section header
+    function sec(tag, title) {
+      return [
+        h('div', { className: 'psec', key: 'tag' }, tag),
+        h('h2', { className: 'ph2', key: 'title' }, decode(title))
+      ];
     }
 
 
     // ═══════════════════════════════════════════
-    // 3. PRODUCT PREVIEW
+    // PRODUCT PREVIEW
     // ═══════════════════════════════════════════
 
     var ProductPreview = createClass({
       render: function() {
-        var entry = this.props.entry;
-        var self = this;
+        var e = this.props.entry;
+        var ga = this.props.getAsset;
 
-        var title = entry.getIn(['data', 'title']) || '';
-        var category = entry.getIn(['data', 'category']) || '';
-        var badge = entry.getIn(['data', 'badge']) || '';
-        var badgeColor = entry.getIn(['data', 'badge_color']) || 'cyan';
-        var pixelPitch = entry.getIn(['data', 'pixel_pitch']) || '';
-        var brightness = entry.getIn(['data', 'brightness']) || '';
-        var refreshRate = entry.getIn(['data', 'refresh_rate']) || '';
-        var priceFrom = entry.getIn(['data', 'price_from']) || '';
-        var description = entry.getIn(['data', 'description']) || '';
-        var heroDesc = entry.getIn(['data', 'hero_description']) || '';
-        var heroTag = entry.getIn(['data', 'hero_tag']) || '';
-        var heroImage = entry.getIn(['data', 'hero_image']);
-        var heroAsset = heroImage ? this.props.getAsset(heroImage) : null;
-
-        var c = getColor(badgeColor);
+        var title = e.getIn(['data', 'title']) || '';
+        var badge = e.getIn(['data', 'badge']) || '';
+        var bc = e.getIn(['data', 'badge_color']) || 'cyan';
+        var pp = e.getIn(['data', 'pixel_pitch']) || '';
+        var br = e.getIn(['data', 'brightness']) || '';
+        var rr = e.getIn(['data', 'refresh_rate']) || '';
+        var price = e.getIn(['data', 'price_from']) || '';
+        var heroDesc = e.getIn(['data', 'hero_description']) || e.getIn(['data', 'description']) || '';
+        var heroTag = decode(e.getIn(['data', 'hero_tag']) || '');
+        var heroImg = e.getIn(['data', 'hero_image']);
+        var c = gc(bc);
 
         var specs = this.props.widgetsFor('specs');
-        var applications = this.props.widgetsFor('applications');
-        var features = this.props.widgetsFor('features');
+        var apps = this.props.widgetsFor('applications');
+        var feats = this.props.widgetsFor('features');
 
-        return h('div', { className: 'pv-wrap' },
+        return h('div', { className: 'pw' },
 
-          // Hero section
-          h('div', { className: 'pv-section' },
-            heroAsset
-              ? h('img', { className: 'pv-hero-img', src: heroAsset.toString(), alt: title })
-              : h('div', { style: { aspectRatio: '16/9', borderRadius: '20px', background: 'var(--card-2)',
-                  border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center',
-                  justifyContent: 'center', color: 'rgba(255,255,255,0.3)', marginBottom: '28px' } },
-                  h('span', {}, '[HERO IMAGE]')),
+          // Hero
+          h('div', { className: 'ps' },
+            img(heroImg ? ga(heroImg) : null, title + ' Hero', '21/9'),
+            h('div', { className: 'pt' },
+              h('div', { className: 'pt-dot' }),
+              h('span', { className: 'pt-text' }, heroTag)),
+            h('h1', { className: 'ph1' }, title),
+            h('p', { className: 'pp' }, heroDesc),
+            h('div', { style: { display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' } },
+              pp && h('span', { className: 'pb pb-ghost' }, pp + ' Pixel Pitch'),
+              br && h('span', { className: 'pb pb-ghost' }, br),
+              rr && h('span', { className: 'pb pb-ghost' }, rr),
+              badge && h('span', { className: 'pb', style: {
+                background: 'rgba(' + c.rgb + ',0.15)', border: '1px solid rgba(' + c.rgb + ',0.3)', color: c.hex
+              } }, badge)),
+            price && h('p', { style: { fontSize: '0.82rem', color: 'var(--muted)' } },
+              'Starting from ', h('strong', { style: { color: 'var(--C)' } }, price))),
 
-            h('div', { className: 'pv-tag' },
-              h('div', { className: 'pv-tag-dot' }),
-              h('span', { className: 'pv-tag-text' }, heroTag)
-            ),
-
-            h('h1', { className: 'pv-title' }, title),
-            h('p', { className: 'pv-sub' }, heroDesc || description),
-
-            // Quick specs badges
-            h('div', { style: { display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px' } },
-              pixelPitch ? h('span', { className: 'pv-badge', style: {
-                background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff'
-              } }, pixelPitch + ' Pixel Pitch') : null,
-              brightness ? h('span', { className: 'pv-badge', style: {
-                background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff'
-              } }, brightness) : null,
-              refreshRate ? h('span', { className: 'pv-badge', style: {
-                background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff'
-              } }, refreshRate) : null,
-              badge ? h('span', { className: 'pv-badge', style: {
-                background: 'rgba(' + c.rgb + ',0.15)', border: '1px solid rgba(' + c.rgb + ',0.3)',
-                color: c.hex
-              } }, badge) : null
-            ),
-
-            priceFrom ? h('div', { style: { fontSize: '0.85rem', color: 'var(--muted)' } },
-              'Starting from ', h('strong', { style: { color: 'var(--C)' } }, priceFrom)
-            ) : null
-          ),
-
-          // Specs table
-          specs && specs.size > 0 ? h('div', { className: 'pv-section' },
-            h('div', { className: 'pv-section-title' }, 'Technical Specifications'),
-            h('h2', { className: 'pv-h2' }, 'Complete Spec Sheet'),
-            h('div', { className: 'pv-card' },
-              specs.map(function(spec, i) {
-                return h('div', { key: i, className: 'pv-spec-row' },
-                  h('span', { className: 'pv-spec-label' }, spec.getIn(['data', 'label'])),
-                  h('span', { className: 'pv-spec-value' }, spec.getIn(['data', 'value']))
-                );
-              })
-            )
-          ) : null,
+          // Specs
+          specs && specs.size > 0 && h('div', { className: 'ps' },
+            sec('Technical Specifications', 'Complete Spec Sheet'),
+            h('div', { className: 'pc' },
+              specs.map(function(s, i) {
+                return h('div', { key: i, className: 'psr' },
+                  h('span', { className: 'psr-l' }, s.getIn(['data', 'label'])),
+                  h('span', { className: 'psr-v' }, decode(s.getIn(['data', 'value']))));
+              }))),
 
           // Applications
-          applications && applications.size > 0 ? h('div', { className: 'pv-section' },
-            h('div', { className: 'pv-section-title' }, 'Applications'),
-            h('h2', { className: 'pv-h2' }, 'Ideal For'),
-            h('div', { className: 'pv-grid pv-grid-2' },
-              applications.map(function(app, i) {
-                return h('div', { key: i, className: 'pv-card' },
-                  h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, marginBottom: '8px' } },
-                    app.getIn(['data', 'name'])),
-                  h('div', { style: { fontSize: '0.82rem', color: 'var(--muted)', lineHeight: '1.65' } },
-                    app.getIn(['data', 'description']))
-                );
-              })
-            )
-          ) : null,
+          apps && apps.size > 0 && h('div', { className: 'ps' },
+            sec('Applications', 'Ideal For'),
+            h('div', { className: 'pg pg2' },
+              apps.map(function(a, i) {
+                return h('div', { key: i, className: 'pc' },
+                  h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, marginBottom: '6px' } },
+                    a.getIn(['data', 'name'])),
+                  h('div', { className: 'pp', style: { marginBottom: 0 } },
+                    a.getIn(['data', 'description'])));
+              }))),
 
           // Features
-          features && features.size > 0 ? h('div', { className: 'pv-section' },
-            h('div', { className: 'pv-section-title' }, 'Key Features'),
-            h('h2', { className: 'pv-h2' }, 'Engineered for Excellence'),
-            h('div', { className: 'pv-grid pv-grid-3' },
-              features.map(function(feat, i) {
-                return h('div', { key: i, className: 'pv-card' },
-                  h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, marginBottom: '8px' } },
-                    feat.getIn(['data', 'name'])),
-                  h('div', { style: { fontSize: '0.82rem', color: 'var(--muted)', lineHeight: '1.65' } },
-                    feat.getIn(['data', 'description']))
-                );
-              })
-            )
-          ) : null
+          feats && feats.size > 0 && h('div', { className: 'ps' },
+            sec('Key Features', 'Engineered for Excellence'),
+            h('div', { className: 'pg pg3' },
+              feats.map(function(f, i) {
+                return h('div', { key: i, className: 'pc' },
+                  h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, marginBottom: '6px' } },
+                    f.getIn(['data', 'name'])),
+                  h('div', { className: 'pp', style: { marginBottom: 0 } },
+                    f.getIn(['data', 'description'])));
+              })))
         );
       }
     });
-
     CMS.registerPreviewTemplate('products', ProductPreview);
 
 
     // ═══════════════════════════════════════════
-    // 4. SOLUTION PREVIEW
+    // SOLUTION PREVIEW
     // ═══════════════════════════════════════════
 
     var SolutionPreview = createClass({
       render: function() {
-        var entry = this.props.entry;
-        var self = this;
+        var e = this.props.entry;
+        var ga = this.props.getAsset;
 
-        var title = entry.getIn(['data', 'title']) || '';
-        var heroTag = entry.getIn(['data', 'hero_tag']) || '';
-        var heroTitle = entry.getIn(['data', 'hero_title']) || '';
-        var heroDesc = entry.getIn(['data', 'hero_description']) || '';
-        var heroImage = entry.getIn(['data', 'hero_image']);
-        var heroAsset = heroImage ? this.props.getAsset(heroImage) : null;
+        var title = e.getIn(['data', 'title']) || '';
+        var heroTag = e.getIn(['data', 'hero_tag']) || '';
+        var heroTitle = decode(e.getIn(['data', 'hero_title']) || '');
+        var heroDesc = e.getIn(['data', 'hero_description']) || '';
+        var heroImg = e.getIn(['data', 'hero_image']);
 
-        // Pain section (object)
-        var painTag = entry.getIn(['data', 'pain_section', 'tag']) || '';
-        var painTitle = entry.getIn(['data', 'pain_section', 'title']) || '';
-        var painParagraphs = entry.getIn(['data', 'pain_section', 'paragraphs']);
-        var painStats = entry.getIn(['data', 'pain_section', 'stats']);
-        var painImage = entry.getIn(['data', 'pain_section', 'image']);
-        var painAsset = painImage ? this.props.getAsset(painImage) : null;
+        var painTag = e.getIn(['data', 'pain_section', 'tag']) || '';
+        var painTitle = decode(e.getIn(['data', 'pain_section', 'title']) || '');
+        var painParas = e.getIn(['data', 'pain_section', 'paragraphs']);
+        var painStats = e.getIn(['data', 'pain_section', 'stats']);
+        var painImg = e.getIn(['data', 'pain_section', 'image']);
 
-        // Why section (object)
-        var whyTag = entry.getIn(['data', 'why_section', 'tag']) || '';
-        var whyTitle = entry.getIn(['data', 'why_section', 'title']) || '';
-        var whyDesc = entry.getIn(['data', 'why_section', 'description']) || '';
-        var whyImage = entry.getIn(['data', 'why_section', 'image']);
-        var whyAsset = whyImage ? this.props.getAsset(whyImage) : null;
+        var whyTag = e.getIn(['data', 'why_section', 'tag']) || '';
+        var whyTitle = decode(e.getIn(['data', 'why_section', 'title']) || '');
+        var whyDesc = e.getIn(['data', 'why_section', 'description']) || '';
+        var whyImg = e.getIn(['data', 'why_section', 'image']);
 
-        // Benefits
         var benefits = this.props.widgetsFor('benefits');
 
-        return h('div', { className: 'pv-wrap' },
+        return h('div', { className: 'pw' },
 
-          // Hero
-          h('div', { className: 'pv-section' },
-            heroAsset
-              ? h('img', { className: 'pv-hero-img', src: heroAsset.toString(), alt: title })
-              : h('div', { style: { aspectRatio: '16/9', borderRadius: '20px', background: 'var(--card-2)',
-                  border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center',
-                  justifyContent: 'center', color: 'rgba(255,255,255,0.3)', marginBottom: '28px' } },
-                  h('span', {}, '[HERO IMAGE]')),
-            h('div', { className: 'pv-tag' },
-              h('div', { className: 'pv-tag-dot' }),
-              h('span', { className: 'pv-tag-text' }, heroTag)
-            ),
-            h('h1', { className: 'pv-title' }, heroTitle || title),
-            h('p', { className: 'pv-sub' }, heroDesc)
-          ),
+          h('div', { className: 'ps' },
+            img(heroImg ? ga(heroImg) : null, title + ' Hero', '21/9'),
+            h('div', { className: 'pt' },
+              h('div', { className: 'pt-dot' }),
+              h('span', { className: 'pt-text' }, heroTag)),
+            h('h1', { className: 'ph1' }, heroTitle || title),
+            h('p', { className: 'pp' }, heroDesc)),
 
-          // Pain section
-          painTitle ? h('div', { className: 'pv-section' },
-            h('div', { className: 'pv-section-title' }, painTag),
-            h('h2', { className: 'pv-h2' }, painTitle),
-            painParagraphs && painParagraphs.size > 0
-              ? painParagraphs.map(function(p, i) {
-                  return h('p', { key: i, className: 'pv-sub' }, p);
-                })
-              : null,
-            painAsset
-              ? h('img', { className: 'pv-hero-img', src: painAsset.toString(), alt: painTag })
-              : null,
-            painStats && painStats.size > 0
-              ? h('div', { className: 'pv-grid pv-grid-2' },
-                  painStats.map(function(stat, i) {
-                    return h('div', { key: i, className: 'pv-card', style: { textAlign: 'center' } },
-                      h('div', { className: 'pv-stat' }, stat.get('value')),
-                      h('div', { style: { fontSize: '0.78rem', color: 'var(--muted)' } }, stat.get('label'))
-                    );
-                  })
-                )
-              : null
-          ) : null,
+          painTitle && h('div', { className: 'ps' },
+            sec(painTag, painTitle),
+            painParas && painParas.size > 0 && painParas.map(function(p, i) {
+              return h('p', { key: i, className: 'pp' }, decode(p));
+            }),
+            img(painImg ? ga(painImg) : null, painTag),
+            painStats && painStats.size > 0 && h('div', { className: 'pg pg2' },
+              painStats.map(function(s, i) {
+                return h('div', { key: i, className: 'pc', style: { textAlign: 'center' } },
+                  h('div', { className: 'pstat', style: { color: i === 0 ? 'var(--M)' : 'var(--C)' } },
+                    s.get('value')),
+                  h('div', { style: { fontSize: '0.75rem', color: 'var(--muted)' } }, s.get('label')));
+              }))),
 
-          // Why section
-          whyTitle ? h('div', { className: 'pv-section' },
-            h('div', { className: 'pv-section-title' }, whyTag),
-            h('h2', { className: 'pv-h2' }, whyTitle),
-            h('p', { className: 'pv-sub' }, whyDesc),
-            whyAsset
-              ? h('img', { className: 'pv-hero-img', src: whyAsset.toString(), alt: whyTag })
-              : null
-          ) : null,
+          whyTitle && h('div', { className: 'ps' },
+            sec(whyTag, whyTitle),
+            h('p', { className: 'pp' }, whyDesc),
+            img(whyImg ? ga(whyImg) : null, whyTag, '21/9')),
 
-          // Benefits
-          benefits && benefits.size > 0 ? h('div', { className: 'pv-section' },
-            h('div', { className: 'pv-section-title' }, 'Benefits'),
-            h('div', { className: 'pv-grid pv-grid-2' },
+          benefits && benefits.size > 0 && h('div', { className: 'ps' },
+            sec('Benefits', 'Key Advantages'),
+            h('div', { className: 'pg pg2' },
               benefits.map(function(b, i) {
-                var c = getColor(b.getIn(['data', 'icon_color']) || 'cyan');
-                return h('div', { key: i, className: 'pv-card',
-                  style: { borderLeftWidth: '3px', borderLeftStyle: 'solid', borderLeftColor: c.hex } },
-                  h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, marginBottom: '8px' } },
+                var c = gc(b.getIn(['data', 'icon_color']) || 'cyan');
+                return h('div', { key: i, className: 'pc',
+                  style: { borderLeft: '3px solid ' + c.hex } },
+                  h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, marginBottom: '6px' } },
                     b.getIn(['data', 'title'])),
-                  h('div', { style: { fontSize: '0.82rem', color: 'var(--muted)', lineHeight: '1.65' } },
-                    b.getIn(['data', 'description']))
-                );
-              })
-            )
-          ) : null
+                  h('div', { className: 'pp', style: { marginBottom: 0 } },
+                    decode(b.getIn(['data', 'description']))));
+              })))
         );
       }
     });
-
     CMS.registerPreviewTemplate('solutions', SolutionPreview);
 
 
     // ═══════════════════════════════════════════
-    // 5. GALLERY PROJECT PREVIEW
+    // GALLERY PROJECT PREVIEW
     // ═══════════════════════════════════════════
 
-    var ProjectPreview = createClass({
+    var GalleryPreview = createClass({
       render: function() {
-        var entry = this.props.entry;
-        var title = entry.getIn(['data', 'title']) || '';
-        var category = entry.getIn(['data', 'category']) || '';
-        var tagLabel = entry.getIn(['data', 'tag_label']) || '';
-        var image = entry.getIn(['data', 'image']);
-        var asset = image ? this.props.getAsset(image) : null;
+        var e = this.props.entry;
+        var title = e.getIn(['data', 'title']) || '';
+        var cat = e.getIn(['data', 'category']) || '';
+        var tag = e.getIn(['data', 'tag_label']) || '';
+        var imgVal = e.getIn(['data', 'image']);
+        var asset = imgVal ? this.props.getAsset(imgVal) : null;
+        var catColors = { worship:'cyan', production:'magenta', airports:'blue', retail:'purple', events:'green' };
+        var c = gc(catColors[cat] || 'cyan');
 
-        var catColors = {
-          worship: 'cyan', production: 'magenta', airports: 'blue',
-          retail: 'purple', events: 'green'
-        };
-        var c = getColor(catColors[category] || 'cyan');
-
-        return h('div', { className: 'pv-wrap', style: { maxWidth: '600px' } },
-          asset
-            ? h('img', { src: asset.toString(), alt: title,
-                style: { width: '100%', aspectRatio: '4/3', objectFit: 'cover',
-                  borderRadius: '20px', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '24px' } })
-            : h('div', { style: { aspectRatio: '4/3', borderRadius: '20px', background: 'var(--card)',
-                border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center',
-                justifyContent: 'center', color: 'rgba(255,255,255,0.3)', marginBottom: '24px' } },
-                h('span', {}, '[PROJECT IMAGE]')),
-          h('div', { style: { display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '12px' } },
-            h('span', { className: 'pv-badge', style: {
+        return h('div', { className: 'pw', style: { maxWidth: '500px' } },
+          img(asset, title, '4/3'),
+          h('div', { style: { display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '10px' } },
+            h('span', { className: 'pb', style: {
               background: 'rgba(' + c.rgb + ',0.15)', border: '1px solid rgba(' + c.rgb + ',0.3)', color: c.hex
-            } }, category ? category.toUpperCase() : ''),
-            tagLabel ? h('span', { style: { fontSize: '0.78rem', color: 'var(--muted)' } }, tagLabel) : null
-          ),
-          h('h2', { className: 'pv-h2' }, title)
-        );
+            } }, cat.toUpperCase()),
+            tag && h('span', { style: { fontSize: '0.75rem', color: 'var(--muted)' } }, tag)),
+          h('h2', { className: 'ph2' }, title));
       }
     });
-
-    CMS.registerPreviewTemplate('projects', ProjectPreview);
+    CMS.registerPreviewTemplate('projects', GalleryPreview);
 
 
     // ═══════════════════════════════════════════
-    // 6. FILE COLLECTION PREVIEWS
+    // HOMEPAGE HERO PREVIEW
     // ═══════════════════════════════════════════
 
-    // Homepage Hero
     var HeroPreview = createClass({
       render: function() {
-        var entry = this.props.entry;
-        var tag = entry.getIn(['data', 'tag']) || '';
-        var titlePrefix = entry.getIn(['data', 'title_prefix']) || '';
-        var titleSuffix = entry.getIn(['data', 'title_suffix']) || '';
-        var description = entry.getIn(['data', 'description']) || '';
-        var bgImage = entry.getIn(['data', 'background_image']);
-        var bgAsset = bgImage ? this.props.getAsset(bgImage) : null;
-        var rotatingWords = entry.getIn(['data', 'rotating_words']);
-        var ctaPrimary = entry.getIn(['data', 'cta_primary_text']) || '';
-        var ctaSecondary = entry.getIn(['data', 'cta_secondary_text']) || '';
-        var proofText = entry.getIn(['data', 'proof_text']) || '';
-        var ratingValue = entry.getIn(['data', 'rating_value']) || '';
+        var e = this.props.entry;
+        var ga = this.props.getAsset;
+        var tag = e.getIn(['data', 'tag']) || '';
+        var pre = e.getIn(['data', 'title_prefix']) || '';
+        var suf = e.getIn(['data', 'title_suffix']) || '';
+        var desc = e.getIn(['data', 'description']) || '';
+        var bgImg = e.getIn(['data', 'background_image']);
+        var words = e.getIn(['data', 'rotating_words']);
+        var cta1 = e.getIn(['data', 'cta_primary_text']) || '';
+        var cta2 = e.getIn(['data', 'cta_secondary_text']) || '';
+        var proof = e.getIn(['data', 'proof_text']) || '';
+        var rating = e.getIn(['data', 'rating_value']) || '';
+        var strips = this.props.widgetsFor('strip_items');
 
-        var stripItems = this.props.widgetsFor('strip_items');
+        return h('div', { className: 'pw' },
+          h('div', { className: 'ps' },
+            img(bgImg ? ga(bgImg) : null, 'Hero Background', '21/9'),
+            h('div', { className: 'pt' },
+              h('div', { className: 'pt-dot' }),
+              h('span', { className: 'pt-text' }, decode(tag))),
+            h('h1', { className: 'ph1' }, pre + ' ' + suf + ' ',
+              words && words.size > 0
+                ? h('span', { style: { color: 'var(--C)' } }, words.first())
+                : null),
+            h('p', { className: 'pp' }, desc),
+            h('div', { style: { display: 'flex', gap: '10px', marginBottom: '16px' } },
+              cta1 && h('span', { className: 'pb', style: {
+                background: 'rgba(224,26,89,0.2)', border: '1px solid rgba(224,26,89,0.4)',
+                color: '#E01A59', padding: '8px 18px' } }, cta1 + ' \u2192'),
+              cta2 && h('span', { className: 'pb', style: {
+                background: 'rgba(0,206,209,0.1)', border: '1px solid rgba(0,206,209,0.3)',
+                color: '#00CED1', padding: '8px 18px' } }, cta2)),
+            h('div', { style: { fontSize: '0.82rem', color: 'var(--muted)', display: 'flex', gap: '12px' } },
+              proof && h('strong', { style: { color: '#fff' } }, proof),
+              rating && h('span', {}, '\u2605\u2605\u2605\u2605\u2605 ' + rating))),
 
-        return h('div', { className: 'pv-wrap' },
-          // Background image
-          bgAsset ? h('img', { className: 'pv-hero-img', src: bgAsset.toString(), alt: 'Hero background' }) : null,
-
-          h('div', { className: 'pv-tag' },
-            h('div', { className: 'pv-tag-dot' }),
-            h('span', { className: 'pv-tag-text' }, tag)
-          ),
-
-          h('h1', { className: 'pv-title' },
-            titlePrefix, h('br'), titleSuffix, ' ',
-            rotatingWords && rotatingWords.size > 0
-              ? h('span', { style: { color: 'var(--C)' } }, rotatingWords.first())
-              : null
-          ),
-
-          h('p', { className: 'pv-sub' }, description),
-
-          // CTA buttons
-          h('div', { style: { display: 'flex', gap: '12px', marginBottom: '24px' } },
-            ctaPrimary ? h('span', { className: 'pv-badge', style: {
-              background: 'rgba(224,26,89,0.2)', border: '1px solid rgba(224,26,89,0.4)',
-              color: '#E01A59', padding: '10px 20px', fontSize: '0.85rem'
-            } }, ctaPrimary + ' \u2192') : null,
-            ctaSecondary ? h('span', { className: 'pv-badge', style: {
-              background: 'rgba(0,206,209,0.1)', border: '1px solid rgba(0,206,209,0.3)',
-              color: '#00CED1', padding: '10px 20px', fontSize: '0.85rem'
-            } }, ctaSecondary) : null
-          ),
-
-          // Social proof
-          h('div', { style: { display: 'flex', gap: '16px', alignItems: 'center', marginBottom: '32px',
-            fontSize: '0.85rem', color: 'var(--muted)' } },
-            proofText ? h('strong', { style: { color: '#fff' } }, proofText) : null,
-            ratingValue ? h('span', {}, '\u2605\u2605\u2605\u2605\u2605 ', ratingValue) : null
-          ),
-
-          // Rotating words list
-          rotatingWords && rotatingWords.size > 0 ? h('div', { className: 'pv-section' },
-            h('div', { className: 'pv-section-title' }, 'Rotating Words'),
-            h('div', { style: { display: 'flex', gap: '8px', flexWrap: 'wrap' } },
-              rotatingWords.map(function(word, i) {
-                return h('span', { key: i, className: 'pv-badge', style: {
+          words && words.size > 0 && h('div', { className: 'ps' },
+            h('div', { className: 'psec' }, 'Rotating Words'),
+            h('div', { style: { display: 'flex', gap: '6px', flexWrap: 'wrap' } },
+              words.map(function(w, i) {
+                return h('span', { key: i, className: 'pb', style: {
                   background: 'rgba(0,206,209,0.1)', border: '1px solid rgba(0,206,209,0.2)', color: '#00CED1'
-                } }, word);
-              })
-            )
-          ) : null,
+                } }, w);
+              }))),
 
-          // Strip items
-          stripItems && stripItems.size > 0 ? h('div', { className: 'pv-section' },
-            h('div', { className: 'pv-section-title' }, 'Strip Items'),
-            h('div', { className: 'pv-grid pv-grid-2' },
-              stripItems.map(function(item, i) {
-                return h('div', { key: i, className: 'pv-card' },
-                  h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, marginBottom: '6px' } },
-                    item.getIn(['data', 'title'])),
-                  h('div', { style: { fontSize: '0.82rem', color: 'var(--muted)', lineHeight: '1.6' } },
-                    item.getIn(['data', 'description']))
-                );
-              })
-            )
-          ) : null
+          strips && strips.size > 0 && h('div', { className: 'ps' },
+            h('div', { className: 'psec' }, 'Strip Items'),
+            h('div', { className: 'pg pg2' },
+              strips.map(function(s, i) {
+                return h('div', { key: i, className: 'pc' },
+                  h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, marginBottom: '4px' } },
+                    s.getIn(['data', 'title'])),
+                  h('div', { className: 'pp', style: { marginBottom: 0 } },
+                    s.getIn(['data', 'description'])));
+              })))
         );
       }
     });
-
     CMS.registerPreviewTemplate('hero', HeroPreview);
 
 
-    // FAQ Preview
+    // ═══════════════════════════════════════════
+    // FAQ PREVIEW
+    // ═══════════════════════════════════════════
+
     var FAQPreview = createClass({
       render: function() {
         var items = this.props.widgetsFor('items');
-        return h('div', { className: 'pv-wrap' },
-          h('div', { className: 'pv-section-title' }, 'FAQ'),
-          h('h2', { className: 'pv-h2' }, 'Frequently Asked Questions'),
-          items && items.size > 0 ? items.map(function(item, i) {
-            return h('div', { key: i, className: 'pv-card' },
-              h('div', { className: 'pv-faq-q' }, item.getIn(['data', 'question'])),
-              h('div', { className: 'pv-faq-a' }, item.getIn(['data', 'answer']))
-            );
-          }) : h('p', { style: { color: 'var(--muted)' } }, 'No FAQ items yet.')
-        );
+        return h('div', { className: 'pw' },
+          sec('FAQ', 'Frequently Asked Questions'),
+          items && items.size > 0 ? items.map(function(q, i) {
+            return h('div', { key: i, className: 'pc', style: { marginBottom: '12px' } },
+              h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, marginBottom: '8px', color: '#fff' } },
+                q.getIn(['data', 'question'])),
+              h('div', { className: 'pp', style: { marginBottom: 0 } },
+                q.getIn(['data', 'answer'])));
+          }) : h('p', { className: 'pp' }, 'No FAQ items yet.'));
       }
     });
-
     CMS.registerPreviewTemplate('faq', FAQPreview);
 
 
-    // Testimonials Preview
+    // ═══════════════════════════════════════════
+    // TESTIMONIALS PREVIEW
+    // ═══════════════════════════════════════════
+
     var TestimonialsPreview = createClass({
       render: function() {
         var items = this.props.widgetsFor('items');
-        var gradients = {
-          magenta: 'linear-gradient(135deg, #E01A59, #ff6b9d)',
-          blue: 'linear-gradient(135deg, #007BFF, #66b3ff)',
-          cyan: 'linear-gradient(135deg, #00CED1, #66e8ea)',
-          purple: 'linear-gradient(135deg, #6F42C1, #a98adb)'
+        var grads = {
+          magenta: 'linear-gradient(135deg,#E01A59,#ff6b9d)',
+          blue: 'linear-gradient(135deg,#007BFF,#66b3ff)',
+          cyan: 'linear-gradient(135deg,#00CED1,#66e8ea)',
+          purple: 'linear-gradient(135deg,#6F42C1,#a98adb)'
         };
-
-        return h('div', { className: 'pv-wrap' },
-          h('div', { className: 'pv-section-title' }, 'Testimonials'),
-          h('h2', { className: 'pv-h2' }, 'What Our Clients Say'),
-          h('div', { className: 'pv-grid pv-grid-3' },
-            items && items.size > 0 ? items.map(function(item, i) {
-              var grad = item.getIn(['data', 'avatar_gradient']) || 'cyan';
-              return h('div', { key: i, className: 'pv-card pv-testimonial' },
-                h('div', { className: 'pv-avatar', style: {
-                  background: gradients[grad] || gradients.cyan, color: '#fff'
-                } }, item.getIn(['data', 'initials'])),
-                h('div', { className: 'pv-quote' }, '"' + (item.getIn(['data', 'quote']) || '') + '"'),
-                h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, fontSize: '0.9rem' } },
-                  item.getIn(['data', 'name'])),
-                h('div', { style: { fontSize: '0.78rem', color: 'var(--muted)' } },
-                  item.getIn(['data', 'role']))
-              );
-            }) : null
-          )
-        );
+        return h('div', { className: 'pw' },
+          sec('Testimonials', 'What Our Clients Say'),
+          h('div', { className: 'pg pg3' },
+            items && items.size > 0 ? items.map(function(t, i) {
+              var g = t.getIn(['data', 'avatar_gradient']) || 'cyan';
+              return h('div', { key: i, className: 'pc', style: { textAlign: 'center' } },
+                h('div', { className: 'pav', style: { background: grads[g] || grads.cyan } },
+                  t.getIn(['data', 'initials'])),
+                h('div', { style: { fontStyle: 'italic', fontSize: '0.82rem', color: 'var(--muted)',
+                  lineHeight: 1.7, marginBottom: '10px' } },
+                  '\u201C' + (t.getIn(['data', 'quote']) || '') + '\u201D'),
+                h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, fontSize: '0.85rem' } },
+                  t.getIn(['data', 'name'])),
+                h('div', { style: { fontSize: '0.72rem', color: 'var(--muted)' } },
+                  t.getIn(['data', 'role'])));
+            }) : null));
       }
     });
-
     CMS.registerPreviewTemplate('testimonials', TestimonialsPreview);
 
 
-    // Stats Preview
+    // ═══════════════════════════════════════════
+    // STATS PREVIEW
+    // ═══════════════════════════════════════════
+
     var StatsPreview = createClass({
       render: function() {
         var items = this.props.widgetsFor('items');
-        var colors = ['#E01A59', '#007BFF', '#00CED1', '#6F42C1'];
-        return h('div', { className: 'pv-wrap' },
-          h('div', { className: 'pv-section-title' }, 'Stats'),
-          h('h2', { className: 'pv-h2' }, 'By The Numbers'),
-          h('div', { className: 'pv-grid pv-grid-4' },
-            items && items.size > 0 ? items.map(function(item, i) {
-              return h('div', { key: i, className: 'pv-card', style: { textAlign: 'center' } },
-                h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, fontSize: '2.4rem',
-                  color: colors[i % colors.length] } },
-                  (item.getIn(['data', 'value']) || '') + (item.getIn(['data', 'suffix']) || '')),
-                h('div', { style: { fontSize: '0.78rem', color: 'var(--muted)', marginTop: '6px' } },
-                  item.getIn(['data', 'label']))
-              );
-            }) : null
-          )
-        );
+        var cols = ['#E01A59', '#007BFF', '#00CED1', '#6F42C1'];
+        return h('div', { className: 'pw' },
+          sec('Stats', 'By The Numbers'),
+          h('div', { className: 'pg pg4' },
+            items && items.size > 0 ? items.map(function(s, i) {
+              return h('div', { key: i, className: 'pc', style: { textAlign: 'center' } },
+                h('div', { className: 'pstat', style: { color: cols[i % cols.length] } },
+                  (s.getIn(['data', 'value']) || '') + (s.getIn(['data', 'suffix']) || '')),
+                h('div', { style: { fontSize: '0.72rem', color: 'var(--muted)', marginTop: '4px' } },
+                  s.getIn(['data', 'label'])));
+            }) : null));
       }
     });
-
     CMS.registerPreviewTemplate('stats', StatsPreview);
 
 
-    // Values Preview
+    // ═══════════════════════════════════════════
+    // VALUES PREVIEW
+    // ═══════════════════════════════════════════
+
     var ValuesPreview = createClass({
       render: function() {
         var items = this.props.widgetsFor('items');
-        return h('div', { className: 'pv-wrap' },
-          h('div', { className: 'pv-section-title' }, 'Values'),
-          h('h2', { className: 'pv-h2' }, 'Our Core Values'),
-          h('div', { className: 'pv-grid pv-grid-2' },
-            items && items.size > 0 ? items.map(function(item, i) {
-              var c = getColor(item.getIn(['data', 'icon_color']) || 'cyan');
-              return h('div', { key: i, className: 'pv-card',
-                style: { borderTopWidth: '3px', borderTopStyle: 'solid', borderTopColor: c.hex } },
-                h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, marginBottom: '8px' } },
-                  item.getIn(['data', 'title'])),
-                h('div', { style: { fontSize: '0.82rem', color: 'var(--muted)', lineHeight: '1.65' } },
-                  item.getIn(['data', 'description']))
-              );
-            }) : null
-          )
-        );
+        return h('div', { className: 'pw' },
+          sec('Values', 'Our Core Values'),
+          h('div', { className: 'pg pg2' },
+            items && items.size > 0 ? items.map(function(v, i) {
+              var c = gc(v.getIn(['data', 'icon_color']) || 'cyan');
+              return h('div', { key: i, className: 'pc',
+                style: { borderTop: '3px solid ' + c.hex } },
+                h('div', { style: { fontFamily: 'var(--fd)', fontWeight: 700, marginBottom: '6px' } },
+                  v.getIn(['data', 'title'])),
+                h('div', { className: 'pp', style: { marginBottom: 0 } },
+                  v.getIn(['data', 'description'])));
+            }) : null));
       }
     });
-
     CMS.registerPreviewTemplate('values', ValuesPreview);
 
   </script>
